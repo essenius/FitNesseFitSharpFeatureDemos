@@ -1,0 +1,8 @@
+---
+Suite
+SymbolicLinks
+  TestCase: DevelopmentEnvironment.TestCase
+Test: no
+---
+!define Server {http://testserver}
+!contents -R2 -p

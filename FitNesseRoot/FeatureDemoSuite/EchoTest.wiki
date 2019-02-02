@@ -1,0 +1,17 @@
+|script|echo fixture|
+|echo  |true    |
+|echo  |false   |
+|echo  |null    |
+|$null=|echo null|
+|check|echo |$null||
+
+!-EchoFixture.cs-!
+{{{namespace TestSlim
+{
+    public class EchoFixture
+    {
+        internal object Echo(object input) => input;
+        internal object EchoNull => null;
+    }
+}
+}}}

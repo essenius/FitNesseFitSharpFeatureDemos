@@ -1,0 +1,8 @@
+|scenario|do something with|param  |and|param1|
+|check   |echo             |@param |this      |
+|check   |echo             |@param1|that      |
+
+!|script          |Echo Fixture |
+|do something with|this|and|that|
+
+!-EchoFixture.cs-!: see EchoTest

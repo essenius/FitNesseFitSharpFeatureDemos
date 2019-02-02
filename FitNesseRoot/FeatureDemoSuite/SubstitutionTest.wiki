@@ -1,0 +1,16 @@
+---
+Suites: variables, symbols
+---
+!define today {!today (yyyyMMdd)}
+
+|script |Echo Fixture |
+|$today=|echo|${today}|
+
+!|script                      |
+|$today2= |echo|${today}      |
+|show     |echo|$today        |
+|show     |echo|$today2       |
+|check not|echo|$today|$today2|
+
+!-EchoFixture-!.cs: see EchoTest
+

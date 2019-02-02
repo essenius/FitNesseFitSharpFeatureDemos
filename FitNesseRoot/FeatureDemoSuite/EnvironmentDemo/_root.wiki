@@ -1,0 +1,6 @@
+---
+Suite
+Suites: symbolic link, environment
+---
+!define blank {=~/^$/}
+!contents -R2 -p

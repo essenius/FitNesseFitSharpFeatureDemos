@@ -1,0 +1,47 @@
+#!define TEST_RUNNER {c:\apps\fitnesse\fitsharp\RunnerW.exe}
+
+!|Script            |Array Test                                     |
+|Set Array          |[1, 2, 3]                                      |
+|check              |Array Field          |0   |1                   |
+|Set Array          |[1,2,3]                                        |
+|check              |Array                |=~/\[\d,2,\d\]/          |
+|check              |Array Field          |0   |1,2,3               |
+|Set Array Of Arrays|[[1, 2], [a, b], [one, two, three], [1,2,3]]   |
+|check              |Array Of Arrays Field|0   |     |0    |1       |
+|check              |Array Of Arrays Field|1   |     |1    |b       |
+|check              |Array Of Arrays Field|2   |     |2    |three   |
+|check              |Array Of Arrays Field|3   |     |0    |1,2,3   |
+|check              |Array Of Arrays      |=~/\[.*, \[one.*\], .*\]/|
+|Set Array          |[xpath://table, a, b]                          |
+|check              |Array Field          |0   |xpath://table       |
+
+!|scenario|do it with|input|
+|push fixture              |
+|start    |Array Test      |
+|Set Array|@input          |
+|Show     |Array           |
+|$call=   |get fixture     |
+|pop fixture               |
+
+!|script   |Array Test|
+|show      |Array     |
+|set array |[q, r]    |
+|do it with|[a, b]    |
+|show      |Array     |
+|start     |$call     |
+|show      |Array     |
+
+!-ArrayTest.cs-!
+{{{using System.Collections.ObjectModel;
+
+namespace TestSlim
+{
+    public class ArrayTest
+    {
+        internal Collection<Collection<string>> ArrayOfArrays { get; set; }
+        internal Collection<string> Array { get; set; }
+        internal string ArrayField(int index) => Array[index];
+        internal string ArrayOfArraysField(int index1, int index2) => ArrayOfArrays[index1][index2];
+    }
+}
+}}}

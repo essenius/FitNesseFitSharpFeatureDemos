@@ -1,0 +1,25 @@
+!|Script|Method And Property                                  |
+|note   |calls the GetId method since that is found first     |
+|Check  |Get Id                      |123                     |
+|note   |calls the Id property                                |
+|check  |id                          |321                     |
+|note   |sets the id property (does not call the SetId method)|
+|set id |4                                                    |
+|check|private id|123|
+|check  |id                          |4                       |
+|check  |get id                      |123                     |
+
+!-MethodAndProperty.cs-!
+{{{namespace TestSlim
+{
+    public class MethodAndProperty
+    {
+        private static int _privateId = 123;
+        internal static int GetId() => _privateId;
+        internal static int Id { get; set; } = 321;
+        internal  static void SetId(int value) => _privateId = value;
+    }
+}
+}}}
+Note: order of the methods is important here! 
+

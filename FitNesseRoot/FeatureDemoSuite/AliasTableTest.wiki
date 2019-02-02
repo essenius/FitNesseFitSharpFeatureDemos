@@ -1,0 +1,38 @@
+!|script|test query|2|
+|show|query|
+|$tq=|get fixture|
+
+|define alias|
+|my query|query: $tq|
+
+|my query|
+|n|2n|
+|1|2|
+|2|4|
+
+!-TestQuery.cs-!:
+{{{using System.Collections.Generic;
+
+namespace TestSlim
+{
+    public class TestQuery
+    {
+        readonly int _max;
+
+        public TestQuery(int maxNum)
+        {
+            _max = maxNum;
+        }
+
+        internal List<object> Query()
+        {
+            var rowList = new List<object>();
+            for (var i = 1; i <= _max; i++)
+            {
+                rowList.Add(new List<object> {new List<object> {"n", i}, new List<object> {"2n", 2*i}});
+            }
+            return rowList;
+        }
+    }
+}
+}}}

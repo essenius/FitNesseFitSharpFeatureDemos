@@ -1,0 +1,3 @@
+!define Server {http://localhost}
+
+!contents -R2 -p 

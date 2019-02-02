@@ -1,0 +1,29 @@
+---
+Suites: plain text table
+---
+!*> Scenarios and plumbing
+|library     |
+|echo fixture|
+
+|scenario|And _|premisse|
+|@premisse              |
+
+|scenario|Given a temperature of _|temperatureIn |
+|start   |Temperature             |@temperatureIn|
+
+|scenario|When I convert it to _|scale |
+|$output=|Value In              |@scale|
+
+|scenario|Then the outcome should be _|expectedOutcome         |
+|check   |echo                        |$output|@expectedOutcome|
+*!
+
+![ script
+Given a temperature of 20 C
+When I convert it to Fahrenheit
+Then the outcome should be 68
+And When I convert it to Kelvin
+Then the outcome should be 293.15
+]!
+Temperature.cs: see TemperatureTest
+!-EchoFixture-!.cs: see EchoTest

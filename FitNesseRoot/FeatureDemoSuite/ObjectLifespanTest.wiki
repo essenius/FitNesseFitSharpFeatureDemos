@@ -1,0 +1,29 @@
+---
+Suites: lifespan
+---
+!|scenario|R2D2 differs from|id   |
+|push fixture                     |
+|start    |memo object      |R2D2 |
+|check    |data             |R2D2 |
+|check    |id               |!=@id|
+|pop fixture                      |
+
+!|script          |memo object|C3PO|
+|check            |data       |C3PO|
+|$id=             |id              |
+|R2D2 differs from|$id             |
+|check            |data       |C3PO|
+|check            |id         |$id |
+
+!-MemoObject.cs-!
+{{{namespace TestSlim
+{
+    public class MemoObject
+    {
+        internal MemoObject(string data) => Data = data;
+        internal MemoObject() => Data = string.Empty;
+        internal string Data { get; set; }
+        internal int Id => GetHashCode();
+    }
+}
+}}}

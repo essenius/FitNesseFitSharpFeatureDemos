@@ -1,0 +1,2 @@
+!|script  |EchoFixture   |
+|check not|echo|${Server}|${blank}|

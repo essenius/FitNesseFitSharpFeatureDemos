@@ -1,0 +1,87 @@
+!|script                 |Naming Conventions   |
+|set Private Static Field|one                  |
+|Internal Static Field   |two                  |
+|set Public Static Field |three                |
+|set Private Field       |four                 |
+|set Internal Field      |five                 |
+|Public Field            |six                  |
+|check                   |Private Field   |four|
+|check                   |Internal Field  |five|
+|check                   |get Public Field|six |
+
+!|script                                         |
+|check                       |Internal Field|five|
+|Private Static Property     |1                  |
+|set Internal Static Property|2                  |
+|Public Static property      |3                  |
+|Private Property            |4                  |
+|Internal Property           |5                  |
+|set Public Property         |6                  |
+
+!|script                                       |
+|check              |get Private Property|4    |
+|check              |Internal Property   |5    |
+|check              |Public Property     |6    |
+|check              |Private Method      |four |
+|check              |Internal Method     |five |
+|check              |Public Method       |six  |
+|set internal method|seven                     |
+|check              |internal field      |seven|
+
+!|script|Naming Conventions            |
+|check  |Public Field            |null |
+|check  |Private Property        |null |
+|check  |Private Static Field    |one  |
+|check  |Internal Static Field   |two  |
+|check  |set Public Static Field |three|
+|check  |Private Static Property |1    |
+|check  |Internal Static Property|2    |
+|check  |Public Static Property  |3    |
+|check  |private static method   |one  |
+|check  |internal static method  |two  |
+|check  |get public static method|three|
+
+!|script|
+|public static method|eight                         |
+|check               |get public static method|eight|
+
+
+!-NamingConventions.cs-!
+{{{namespace TestSlim
+{
+    public class NamingConventions
+    {
+        private object _privateField;
+        internal object InternalField;
+        public object PublicField;
+
+        private static object _privateStaticField;
+        internal static object InternalStaticField;
+        public static object PublicStaticField;
+
+        internal static object InternalStaticProperty { get; set; }
+        private static object PrivateStaticProperty { get; set; }
+        public static object PublicStaticProperty { get; set; }
+
+        internal object InternalProperty { get; set; }
+        private object PrivateProperty { get; set; }
+        public object PublicProperty { get; set; }
+
+        internal static object InternalStaticMethod() => InternalStaticField;
+        private static object PrivateStaticMethod() => _privateStaticField;
+        public static object PublicStaticMethod() => PublicStaticField;
+
+        internal static void InternalStaticMethod(object value) => InternalStaticField = value;
+        private static void PrivateStaticMethod(object value) => _privateStaticField = value;
+        public static void PublicStaticMethod(object value) => PublicStaticField = value;
+
+        internal object InternalMethod() => InternalField;
+        private object PrivateMethod() => _privateField;
+
+        public object PublicMethod() => PublicField;
+        internal void InternalMethod(object value) => InternalField = value;
+        private void PrivateMethod(object value) => _privateField = value;
+        public void PublicMethod(object value) => PublicField = value;
+    }
+}
+}}}

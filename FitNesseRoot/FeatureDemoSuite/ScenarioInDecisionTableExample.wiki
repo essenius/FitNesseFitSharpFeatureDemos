@@ -1,0 +1,18 @@
+---
+Suites: decision table, scenario table
+---
+!|Library|
+|TemperatureFixture|
+
+|scenario|Convert|temperature        |in|scale       |to|targetScale|expect|result|
+|check   |convert|@temperature @scale|to|@targetScale|@result                     |
+
+!|Convert In To Expect               |
+|temperature|scale|targetScale|result|
+|20         |C    |F          |68    |
+|68         |F    |C          |20    |
+|273.15     |K    |C          |0     |
+|212        |F    |K          |373.15|
+
+!-TemperatureFixture-!.cs: see TemperatureTest
+ 

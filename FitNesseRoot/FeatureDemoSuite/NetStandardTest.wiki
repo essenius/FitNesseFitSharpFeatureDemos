@@ -1,0 +1,20 @@
+!path "TestSlim\NetStandardTestSlim.dll"
+
+.Net Standard is supported up to level 1.4
+
+!|import|
+|NetStandardTestSlim|
+
+!|script|Property Container|
+|set property|x|
+|check |property|x|
+
+!-PropertyContainer.cs-!
+{{{namespace NetStandardTestSlim
+{
+    public class PropertyContainer
+    {
+        internal object Property { get; set; }
+    }
+}
+}}}

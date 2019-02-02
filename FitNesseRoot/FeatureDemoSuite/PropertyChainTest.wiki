@@ -1,0 +1,28 @@
+|scenario |check property|property1|.|property2||value|
+|$fixture=|@property1                                 |
+|push fixture                                         |
+|start    |$fixture                                   |
+|check    |@property2    |@value                      |
+|pop fixture                                          |
+
+!|script       |Main Fixture                    |
+|check property|Sub fixture|.|sub property||demo|
+
+!-MainFixture-!.cs
+{{{namespace TestSlim
+{
+    public class MainFixture
+    {
+        // constructor must be public for FitSharp to instantiate the class
+        public MainFixture() => SubFixture = new SubFixture();
+        internal SubFixture SubFixture { get; }
+    }
+
+    public class SubFixture
+    {
+        // constructor can be internal as FitSharp doesn't instantiate it directly
+        internal SubFixture() => SubProperty = "demo";
+        internal string SubProperty { get; }
+    }
+}
+}}}
