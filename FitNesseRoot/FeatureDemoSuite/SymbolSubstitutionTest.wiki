@@ -1,0 +1,26 @@
+There are some peculiarities in the way FitNesse handles symbols. In this example we want text '_input' be concatenated to the value of !-$symbol-!, and create a new symbol !-$symbolInput1-! with that new value. But we can't make that work, because $symbol_input is also a valid symbol name. 
+
+!|import |
+|TestSlim|
+see how though the substituted value doesnt' make it to the assignment
+
+!|script       |Echo Fixture                                                          |
+|$symbol=      |echo            |id:my_combo                                          |
+|$symbolInput1=|echo            |$symbol_input                                        |
+|check         |echo            |$symbolInput1           |id:my_combo_input           |
+|check         |echo            |$symbolInput1           |$symbol_input               |
+If we use as space instead of an underscore, all works as expected. That's because the space is a symbol name terminator.
+
+|script                                             |
+|$symbolInput2=|echo|$symbol input                  |
+|check         |echo|$symbolInput2|id:my_combo input|
+We can work around it by defining the base value as a variable instead of a symbol
+
+!define define {id:my_combo2}
+
+|script                                              |
+|$symbol2=     |echo|${define}                       |
+|$symbol2Input=|echo|${define}_input                 |
+|check         |echo|$symbol2Input|id:my_combo2_input|
+
+!-EchoFixture-!.cs: see EchoTest

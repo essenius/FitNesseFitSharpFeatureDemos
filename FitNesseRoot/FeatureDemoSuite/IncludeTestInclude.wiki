@@ -1,0 +1,4 @@
+!define IncludedVariable {Variable Value}
+
+|script          |echo fixture     |
+|$includedSymbol=|echo|Symbol Value|

@@ -1,4 +1,4 @@
-!path "TestSlim\NetStandardTestSlim.dll"
+!path "TestSlim\NetStandardTestSlim\bin\Debug\netstandard1.4\NetStandardTestSlim.dll"
 
 .Net Standard is supported up to level 1.4
 

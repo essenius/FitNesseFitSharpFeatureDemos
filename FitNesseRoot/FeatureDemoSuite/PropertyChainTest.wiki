@@ -1,9 +1,11 @@
-|scenario |check property|property1|.|property2||value|
-|$fixture=|@property1                                 |
-|push fixture                                         |
-|start    |$fixture                                   |
-|check    |@property2    |@value                      |
-|pop fixture                                          |
+If fixture methods return class instances, we can assign those to symbols.
+With that, we can do nifty things like making fixtures from those instances and calling methods on them. 
+
+|scenario|check property|property1|.|property2||value|
+|push fixture                                        |
+|start   |@property1                                 |
+|check   |@property2    |@value                      |
+|pop fixture                                         |
 
 !|script       |Main Fixture                    |
 |check property|Sub fixture|.|sub property||demo|
@@ -13,7 +15,7 @@
 {
     public class MainFixture
     {
-        // constructor must be public for FitSharp to instantiate the class
+        // constructor must be public for FitSharp to be able to find and instantiate the class
         public MainFixture() => SubFixture = new SubFixture();
         internal SubFixture SubFixture { get; }
     }

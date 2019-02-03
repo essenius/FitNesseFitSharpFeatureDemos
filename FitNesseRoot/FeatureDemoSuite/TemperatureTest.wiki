@@ -1,36 +1,32 @@
 ---
 Suites: variables, symbols
 ---
+This test shows how you can use objects as symbol values. The Convert fixture function expects a Temperature object. So !-FitSharp-! will call the static Parse method on Temperature to try and parse the parameter value and return the new object as the input parameter. Then !-ConvertTo-! can call the !-ValueIn-! method of that object to convert the value. 
 !define CF_Equality {-40} 
+!define KF_Equality {574.5875}
 
 !|script|TemperatureFixture                          |
 |check  |convert|68 F            |to|C|20            |
 |check  |convert|${CF_Equality} C|to|F|${CF_Equality}|
+|check  |convert|${KF_Equality}K |to|F|${KF_Equality}|
 
-!define KF_Equality {574.5875}
 !define TemperatureC {20}
 !define TemperatureF {${=${TemperatureC} * 9/5 + 32=}}
 
-!|script|TemperatureFixture                            |
-|check  |convert|${TemperatureF} F|to|C|${TemperatureC}|
-
+!|script                                             |
+|check|convert|${TemperatureF} F|to|C|${TemperatureC}|
+Redefine the variable containing temperature in centigrade and the Fahrenheit value will be re-evaluated as well 
 !define TemperatureC {25}
 
 !|script                                             |
 |check|convert|${TemperatureF} F|to|C|${TemperatureC}|
-
-!|script                                           |
-|check|convert|68 F            |to|C|20            |
-|check|convert|${CF_Equality} C|to|F|${CF_Equality}|
-|check|convert|${KF_Equality}K |to|F|${KF_Equality}|
+Get a reference to a temperature object holding the temperature of boiling water, and use that as the parameter for the Convert To fixture function.
 
 !|script  |temperature|212F|
 |$boiling=|get fixture     |
 
 !|script|Temperature Fixture      |
 |check  |convert|$boiling|to|C|100|
-#|check|convert|0C|to|Fahrenheit|32|
-#|check|convert|4 k|to|celsius|-269.15|
 
 !-TemperatureFixture-!.cs
 {{{namespace TestSlim
@@ -43,57 +39,53 @@ Suites: variables, symbols
 }}}
 Temperature.cs
 {{{using System;
-using System.Globalization;
 
 namespace TestSlim
 {
     public class Temperature
     {
-        private const double AbsoluteZeroInCelsius = -273.15;
-        private const double AbsoluteZeroInFahrenheit = -459.67;
-        private const int PrecisionInDigits = 10;
-
-        internal static Temperature Parse(string input) => new Temperature(input);
+        private const double AbsZeroInC = -273.15;
+        private const double AbsZeroInF = -459.67;
+        private const int Digits = 10;
 
         public Temperature(string input)
         {
             var scale = input?.Substring(input.Length - 1).ToUpperInvariant();
-            var temperature = Convert.ToDouble(input?.Substring(0, input.Length - 1).Trim(), CultureInfo.InvariantCulture);
+            var temperature = Convert.ToDouble(input?.Substring(0, input.Length - 1).Trim());
             switch (scale)
             {
                 case "F":
-                    Value = Math.Round((temperature - AbsoluteZeroInFahrenheit) * 5 / 9, PrecisionInDigits);
+                    Value = Math.Round((temperature - AbsZeroInF) * 5 / 9, Digits);
                     break;
                 case "C":
-                    Value = temperature - AbsoluteZeroInCelsius;
+                    Value = temperature - AbsZeroInC;
                     break;
                 case "K":
                     Value = temperature;
                     break;
                 default:
-                    throw new FormatException("Expected double ending with F, C or K.");
+                    throw new FormatException("Expected a double, ending with F, C or K");
             }
         }
 
-        internal double Value { get; }
-
-        public override string ToString() => "Temperature: " + Value + "K";
+        public double Value { get; }
+        public static Temperature Parse(string input) => new Temperature(input);
+        public override string ToString() => $"Temperature: {Value} K";
 
         internal double ValueIn(string scale)
         {
             switch (scale?.Substring(0, 1).ToUpperInvariant())
             {
                 case "F":
-                    return Math.Round(Value * 9 / 5 + AbsoluteZeroInFahrenheit, PrecisionInDigits);
+                    return Math.Round(Value * 9 / 5 + AbsZeroInF, Digits);
                 case "C":
-                    return Value + AbsoluteZeroInCelsius;
+                    return Value + AbsZeroInC;
                 case "K":
                     return Value;
                 default:
-                    throw new FormatException("Unrecognized temperature scale: " + scale);
+                    throw new FormatException($"Unrecognized scale: {scale}");
             }
         }
     }
 }
-
 }}}

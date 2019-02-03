@@ -1,4 +1,4 @@
-Showing an error in !-FitSharp-!: you can't use a symbol for the full fixture name. That resolves to a string instead of the fixture class.
+Showing an error in !-FitSharp-! up to 2.3: you can't use a symbol for the full fixture name. That resolves to a string instead of the fixture class.
 It works fine if we use a partial name and hard-code the rest. Issue was reported: https://github.com/jediwhale/fitsharp/issues/116 
 It was fixed in version 2.4. 
 

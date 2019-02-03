@@ -16,11 +16,9 @@ namespace TestSlim
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public class MethodAndProperty
     {
-        private static int _privateId = 123;
-        public static int Id { get; set; } = 321;
-        public static int GetId() => _privateId;
-        public static void SetId(int value) => _privateId = value;
-
-        public static object Echo(object input) => "Echo:" + input;
+        private static int _privateData = 123;
+        public static int Data { get; set; } = 321;
+        public static int GetData() => _privateData;
+        public static void SetData(int value) => _privateData = value;
     }
 }

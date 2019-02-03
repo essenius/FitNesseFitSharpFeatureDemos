@@ -1,0 +1,7 @@
+Show that variables are passed on from include files, but symbols aren't
+
+!include IncludeTestInclude
+
+|script                       |
+|show|echo|${IncludedVariable}|
+|show|echo|$IncludedSymbol    |

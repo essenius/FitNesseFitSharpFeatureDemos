@@ -1,0 +1,5 @@
+!|library|
+|Method And Property|
+
+|script|Echo Fixture|
+|show|echo|hello|

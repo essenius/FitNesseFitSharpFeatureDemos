@@ -1,3 +1,5 @@
+The argument name matching can sometimes behave unexpectedly. With the matching, FitNesse stops after it finds a matching name, even if there is an argument that would match the complete name. So instead of taking the value of @param1, the value of @param is taken with the value '1' appended to it. The workaround is never to have a parameters with names where one contains the other. E.g. using @param1 and @param2 would not have caused issues.
+
 |scenario|do something with|param  |and|param1|
 |check   |echo             |@param |this      |
 |check   |echo             |@param1|that      |

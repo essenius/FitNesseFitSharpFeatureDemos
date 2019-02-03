@@ -11,7 +11,6 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 
 namespace TestSlim
 {
@@ -26,8 +25,7 @@ namespace TestSlim
         public Temperature(string input)
         {
             var scale = input?.Substring(input.Length - 1).ToUpperInvariant();
-            var temperature = Convert.ToDouble(input?
-                .Substring(0, input.Length - 1).Trim(), CultureInfo.InvariantCulture);
+            var temperature = Convert.ToDouble(input?.Substring(0, input.Length - 1).Trim());
             switch (scale)
             {
                 case "F":

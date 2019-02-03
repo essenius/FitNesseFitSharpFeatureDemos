@@ -1,0 +1,15 @@
+!4 Comment table
+|Comment|
+|this is ignored|
+|and so is this|
+!4 Comment line in a script table
+|script|echo fixture|
+|note|this is ignored too|
+!4 now we comment out a script table. Note that you need to keep any exclamation marks as the first character of the table.
+!|comment|
+|script|echo fixture|
+|check|echo|ignored|wrong|
+!4 if you put an exclamation mark as the first character in a table row, it will interpret it as the start of a new table. 
+|comment|
+!|script|echo fixture|
+|check|echo|executed|executed|

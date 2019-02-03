@@ -1,0 +1,63 @@
+This page shows how to return test results for Table Tables. 
+The value in the first column will be returned in the second column. A third column is added with the original value of the second column
+A new row is added at the bottom
+
+|table:Table Fixture                         |
+|pass                 |This should pass      |
+|pass:pass message    |Pass with message     |
+|fail                 |This should fail      |
+|fail:fail message    |Fail with message     |
+|ignore               |This should be ignored|
+|ignore:ignore message|ignore with message   |
+|report:report message|Report with message   |
+|error:error message  |Problem               |
+|                     |should not change     |
+|no change            |should not change     |
+|different            |indifferent           |
+!-TableFixture.cs-!
+{{{using System.Collections.Generic;
+using System.Linq;
+
+namespace TestSlim
+{
+    using TableList = List<List<string>>;
+    using RowList = List<string>;
+
+    public class TableFixture
+    {
+        private static RowList MakeResultRow(RowList input) => new RowList {"", input[0]};
+
+        public static TableList DoTable(TableList table) => table.Select(MakeResultRow).ToList();
+    }
+}
+}}}
+This shows how to leave the existing columns untouched and add a column with the test result
+
+|table:Add One Column|
+|this data is ok     |
+!-AddOneColumn.cs-!
+{{{
+using System.Collections.ObjectModel;
+
+namespace TestSlim
+{
+    using TableType = Collection<Collection<string>>;
+
+    public class AddOneColumn
+    {
+        public static TableType DoTable(TableType table)
+        {
+
+            foreach (var row in table)
+            {
+                for (var i = 0; i < row.Count; i++) 
+                {
+                    row[i] = string.Empty;
+                }
+                row.Add("pass:ok");
+            } 
+            return table;
+        }
+    }
+}
+}}}

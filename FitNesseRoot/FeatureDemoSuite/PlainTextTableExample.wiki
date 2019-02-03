@@ -1,6 +1,8 @@
 ---
 Suites: plain text table
 ---
+Plain tables can be used to create BDD style tests in the given-when-then format which tend to be better understood by business oriented people
+
 !*> Scenarios and plumbing
 |library     |
 |echo fixture|

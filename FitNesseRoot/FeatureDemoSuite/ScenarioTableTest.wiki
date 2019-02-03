@@ -1,0 +1,33 @@
+#|scenario|temperature _ is _ F _ C _ K|input,fahrenheit,celsius,kelvin|
+|scenario|temperature|input |is|fahrenheit|F|celsius|C|kelvin|K|
+|check   |convert    |@input|to|F         |@fahrenheit         |
+|check   |convert    |@input|to|C         |@celsius            |
+|check   |convert    |@input|to|K         |@kelvin             |
+
+|script     |temperature fixture       |
+|temperature|20 C|is|68|F|20|C|293.15|K|
+|temperature|32 F|is|32|F|0 |C|273.15|K|
+
+|decision:temperature is F C K  |
+|input|fahrenheit|celsius|kelvin|
+|20 C |68        |20     |293.15|
+|32 F |32        |0      |273.15|
+
+
+
+|scenario|Convert table _ _ _ _|input,from,to,result?|
+|$result=|convert              |@input @from |to |@to|
+
+|decision:convert table|
+|input |from|to|result?|
+|20    |C   |F |68     |
+|32    |F   |K |273.15 |
+
+|decision:convert table|given|from|C|to|F|
+|input                 |result?          |
+|20                    |68               |
+|0                     |32               |
+|100                   |212              |
+|-40                   |-40              |
+
+!-TemperatureFixture.cs-!: see TemperatureTest

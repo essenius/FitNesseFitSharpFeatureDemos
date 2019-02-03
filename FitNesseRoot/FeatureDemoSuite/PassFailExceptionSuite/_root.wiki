@@ -1,2 +1,1 @@
-!path "TestSlim\TestSlim.dll"
 !contents -R2 -g -p -f -h

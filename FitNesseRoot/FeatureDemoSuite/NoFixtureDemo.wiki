@@ -1,0 +1,46 @@
+---
+Test
+---
+Because !-FitSharp-! works with plain C# objects, sometimes you don’t even need a fixture!
+
+!path "TestSlim\Add\bin\debug\Add.exe"
+
+!| import|
+|Add     |
+
+|script|Calc      |
+|check |Add|5||4|9|
+
+|script|Program|
+|check|Main|[4, 5]|0|
+|check|Main|[4, q]|1|
+
+!-Add.cs-!:
+{{{namespace Add
+{
+    public class Calc
+    {
+        public long Add(long a, long b) => a + b;
+    }
+}
+}}}
+!-Program.cs-!:
+{{{using System;
+
+namespace Add
+{
+    public class Program
+    {
+        public static int Main(string[] args)
+        {
+            if (args.Length >= 2 && long.TryParse(args[0], out var a) && long.TryParse(args[1], out var b))
+            {
+                Console.WriteLine(new Calc().Add(a, b));
+                return 0;
+            }
+            Console.Error.WriteLine("Need two long integers as parameters");
+            return 1;
+        }
+    }
+}
+}}}

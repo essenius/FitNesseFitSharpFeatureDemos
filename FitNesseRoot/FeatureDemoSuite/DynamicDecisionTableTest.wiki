@@ -1,0 +1,50 @@
+|dynamic decision:Dynamic Decision Fixture|
+|Jan |Feb |Mar |Apr|May|Jun|Q1?|Q2?|Total?|
+|100 |150 |175 |160|210|180|425|550|975   |
+|135 |220 |165 |100|230|210|520|540|1060  |
+|-10 |30  |70  |130|180|270|90 |580|670   |
+
+!-DynamicDecisionFixture.cs-!:
+{{{using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace TestSlim
+{
+    public class DynamicDecisionFixture
+    {
+        private readonly List<string> _q1Months = new List<string> {"JAN", "FEB", "MAR"};
+        private readonly List<string> _q2Months = new List<string> {"APR", "MAY", "JUN"};
+
+        private readonly Dictionary<string, double> _totals = new Dictionary<string, double>
+        {
+            {"Q1", 0.0},
+            {"Q2", 0.0},
+            {"TOTAL", 0.0}
+        };
+
+        public double Get(string columnName) => _totals[columnName.ToUpperInvariant()];
+
+        public void Reset()
+        {
+            foreach (var key in _totals.Keys.ToList()) _totals[key] = 0.0;
+        }
+
+        public void Set(string columnName, double value)
+        {
+            _totals["TOTAL"] += value;
+            var month = columnName.ToUpperInvariant();
+            if (_q1Months.Contains(month))
+            {
+                _totals["Q1"] += value;
+                return;
+            }
+            if (!_q2Months.Contains(month))
+            {
+                throw new ArgumentException("Column name must be JAN-JUN");
+            }
+            _totals["Q2"] += value;
+        }
+    }
+}
+}}}

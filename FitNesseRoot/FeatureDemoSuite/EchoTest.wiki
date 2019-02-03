@@ -5,13 +5,14 @@
 |$null=|echo null|
 |check|echo |$null||
 
-!-EchoFixture.cs-!
+!-EchoFixture.cs-!:
 {{{namespace TestSlim
 {
     public class EchoFixture
     {
-        internal object Echo(object input) => input;
-        internal object EchoNull => null;
+        public static object EchoNull => null;
+        public static object Echo(object input) => input;
     }
 }
 }}}
+
