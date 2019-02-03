@@ -11,6 +11,7 @@ FitNesseRoot/TemplateLibrary/
 FitNesseRoot/files/testResults/
 FitNesseRoot/PageFooter
 FitNesseRoot/PageHeader
+FitNesseRoot/FrontPage
 FitNesseRoot/**/*.zip
 Plugins/
 Fixtures/
