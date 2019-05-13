@@ -1,3 +1,2 @@
 * text=auto
-*.wiki text eol=lf
-*.wiki linguist-language=FitNesse
+*.wiki text linguist-language=FitNesse
