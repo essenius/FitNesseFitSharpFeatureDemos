@@ -36,4 +36,4 @@ namespace TestSlim
     }
 }
 }}}
-<!-- vim: syntax=text -->
+
