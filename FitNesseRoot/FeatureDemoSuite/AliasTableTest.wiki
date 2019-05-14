@@ -1,3 +1,4 @@
+<!-- vim: syntax=text -->
 !|script|test query|2|
 |show|query|
 |$tq=|get fixture|
