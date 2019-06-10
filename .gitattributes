@@ -1,2 +1,2 @@
 * text=auto
-*.wiki text eol=lf
+*.wiki linguist-language=Text
