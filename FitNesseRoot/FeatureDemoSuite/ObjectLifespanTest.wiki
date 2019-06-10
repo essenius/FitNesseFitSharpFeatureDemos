@@ -5,12 +5,12 @@ Each new table definition has its own fixture instance.
 
 The scenario table creates a new instance and shows it is a different one
 
-!|scenario|R2D2 differs from  |id    |
-|push fixture                        |
-|start    |memo object        |R2D2  |
-|check    |data               |R2D2  |
-|check    |id                 |!=@id |
-|pop fixture                         |
+!|scenario|R2D2 differs from|id   |
+|push fixture                     |
+|start    |memo object      |R2D2 |
+|check    |data             |R2D2 |
+|check    |id               |!=@id|
+|pop fixture                      |
 
 !|script          |memo object             |C3PO            |
 |check            |data                    |C3PO            |

@@ -4,11 +4,11 @@ There are some peculiarities in the way FitNesse handles symbols. In this exampl
 |TestSlim|
 see how though the substituted value doesnt' make it to the assignment
 
-!|script       |Echo Fixture                                                          |
-|$symbol=      |echo            |id:my_combo                                          |
-|$symbolInput1=|echo            |$symbol_input                                        |
-|check         |echo            |$symbolInput1           |id:my_combo_input           |
-|check         |echo            |$symbolInput1           |$symbol_input               |
+!|script       |Echo Fixture                        |
+|$symbol=      |echo|id:my_combo                    |
+|$symbolInput1=|echo|$symbol_input                  |
+|check         |echo|$symbolInput1|id:my_combo_input|
+|check         |echo|$symbolInput1|$symbol_input    |
 If we use as space instead of an underscore, all works as expected. That's because the space is a symbol name terminator.
 
 |script                                             |

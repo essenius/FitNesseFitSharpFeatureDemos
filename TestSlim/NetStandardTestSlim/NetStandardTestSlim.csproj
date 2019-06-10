@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
+    <Version>2.2.0</Version>
+    <Authors>Rik Essenius</Authors>
+    <Company />
+    <Description>Sample .Net Standard fixture for FitNesse</Description>
+    <Copyright>Copyright © 2015-2019 Rik Essenius</Copyright>
+    <PackageLicenseUrl>https://github.com/essenius/FitNesseFitSharpFeatureDemos/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/essenius/FitNesseFitSharpFeatureDemos</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

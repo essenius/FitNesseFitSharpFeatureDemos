@@ -15,19 +15,17 @@ using System.Diagnostics.CodeAnalysis;
 namespace TestSlim
 {
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
-
     public class ParameterTypes
     {
-        public static bool Negate(bool input) => !input;
         public static int AddTo(int input1, int input2) => input1 + input2;
-        public static string ConcatAnd(string first, string second) => first + second;
         public static byte BitwiseNegate(byte input) => Convert.ToByte(input ^ 0xff);
-        public static int Negate(int input) => -input;
-        public static bool HasValue(int? input) => input.HasValue;
+        public static string ConcatAnd(string first, string second) => first + second;
         public static decimal DecimalAddTo(decimal input1, decimal input2) => input1 + input2;
         public static double DoubleAddTo(double input1, double input2) => input1 + input2;
-        public static double ReciprocalOf(double input) => 1 / input;
         public static object Echo(object input) => input;
+        public static bool HasValue(int? input) => input.HasValue;
+        public static bool Negate(bool input) => !input;
+        public static int Negate(int input) => -input;
 
         public static object NegateObject(object input)
         {
@@ -36,5 +34,8 @@ namespace TestSlim
             if (bool.TryParse(input.ToString(), out var b)) return !b;
             return "not " + input;
         }
+
+        public static int? NullableInt(int? input) => input;
+        public static double ReciprocalOf(double input) => 1 / input;
     }
 }
