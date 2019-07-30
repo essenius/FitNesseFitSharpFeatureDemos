@@ -10,7 +10,6 @@
 // See the License for the specific language governing permissions and limitations under the License.
 
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace TestSlim
 {
@@ -20,17 +19,15 @@ namespace TestSlim
     {
         public static TableType DoTable(TableType table)
         {
-
             foreach (var row in table)
             {
                 // Make all columns empty to keep them unchanged 
-                for (var i = 0; i < row.Count; i++) 
+                for (var i = 0; i < row.Count; i++)
                 {
                     row[i] = string.Empty;
-                    
                 }
                 row.Add("pass:ok");
-            } 
+            }
             return table;
         }
     }

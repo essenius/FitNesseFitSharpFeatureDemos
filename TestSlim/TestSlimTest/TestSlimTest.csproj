@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>FitNesseTestRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,6 +55,7 @@
     <Compile Include="ParameterTypesTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FitNesseTestRules.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

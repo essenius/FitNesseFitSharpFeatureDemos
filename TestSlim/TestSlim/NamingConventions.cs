@@ -14,7 +14,9 @@ using System.Diagnostics.CodeAnalysis;
 namespace TestSlim
 {
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global"),
-     SuppressMessage("ReSharper", "UnusedMember.Global"), SuppressMessage("ReSharper", "UnusedMember.Local")]
+     SuppressMessage("ReSharper", "UnusedMember.Global"), SuppressMessage("ReSharper", "UnusedMember.Local"),
+     SuppressMessage("Code Quality", "IDE0051:Remove unused private members", Justification = "Demo for FitSharp")]
+
     public class NamingConventions
     {
         private static object _privateStaticField;

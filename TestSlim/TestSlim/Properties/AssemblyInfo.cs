@@ -28,5 +28,5 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("03e5c6ad-4d62-4649-884c-2aa651bb7c42")]
 
-[assembly: AssemblyVersion("2.2.0")]
+[assembly: AssemblyVersion("2.2.1")]
 [assembly:InternalsVisibleTo("TestSlimTest")]
