@@ -1,6 +1,5 @@
 This page shows how to return test results for Table Tables. 
-The value in the first column will be returned in the second column. A third column is added with the original value of the second column
-A new row is added at the bottom
+The value in the first column will be returned in the second column. The first column remains unaltered.
 
 |table:Table Fixture                         |
 |pass                 |This should pass      |
@@ -14,6 +13,12 @@ A new row is added at the bottom
 |                     |should not change     |
 |no change            |should not change     |
 |different            |indifferent           |
+
+This shows how to leave the existing columns untouched and add a column with the test result
+
+|table:Add One Column|
+|this data is ok     |
+
 !-TableFixture.cs-!
 {{{using System.Collections.Generic;
 using System.Linq;
@@ -31,10 +36,9 @@ namespace TestSlim
     }
 }
 }}}
-This shows how to leave the existing columns untouched and add a column with the test result
 
-|table:Add One Column|
-|this data is ok     |
+We can use both Lists and Collections in the interface with !-FitSharp-!
+
 !-AddOneColumn.cs-!
 {{{
 using System.Collections.ObjectModel;

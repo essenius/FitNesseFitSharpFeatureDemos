@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2019 Rik Essenius
+﻿// Copyright 2015-2020 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -9,25 +9,20 @@
 // distributed on an "AS IS" BASIS WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and limitations under the License.
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace TestSlim
 {
-    [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Entry point for FitSharp"),
-     SuppressMessage("ReSharper", "MemberCanBePrivate.Global"), SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     public class MainFixture
     {
+        // constructor must be public for FitSharp to instantiate the class
         public MainFixture() => SubFixture = new SubFixture();
-        public SubFixture SubFixture { get; }
+        internal SubFixture SubFixture { get; }
     }
 
-    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local", Justification = "Used by FitSharp"),
-     SuppressMessage("ReSharper", "MemberCanBePrivate.Global"), SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     public class SubFixture
     {
         // constructor can be internal as FitSharp doesn't instantiate it directly
-        public SubFixture() => SubProperty = "demo";
+        internal SubFixture() => SubProperty = "demo";
 
-        public string SubProperty { get; }
+        internal string SubProperty { get; }
     }
 }

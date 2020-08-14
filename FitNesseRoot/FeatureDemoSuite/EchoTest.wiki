@@ -1,9 +1,21 @@
+Shows what happens if fixture functions return 'true', 'false' and you don't use 'ensure' or 'reject'.
+Note that FitNesse only works with strings so it doesn't make a difference if the variable in C# is really a boolean.
+The value 'true' passes, 'false' fails, and anything else ignores. Note these are case sensitive. 
+!-FitSharp-! takes care of translating booleans to the right values.
+
 |script|echo fixture|
-|echo  |true    |
-|echo  |false   |
-|echo  |null    |
-|$null=|echo null|
-|check|echo |$null||
+|echo  |true        |
+|echo  |false       |
+|echo  |null        |
+|echo  |1           |
+|echo  |0           |
+|echo  |True        |
+|echo  |False       |
+|echo  |random text |
+|echo  |            |
+|$null=|echo null   |
+|check |echo |$null||
+|echo  |$null       |
 
 !-EchoFixture.cs-!:
 {{{namespace TestSlim

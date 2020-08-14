@@ -1,27 +1,35 @@
-#|scenario|temperature _ is _ F _ C _ K|input,fahrenheit,celsius,kelvin|
-|scenario|temperature|input |is|fahrenheit|F|celsius|C|kelvin|K|
-|check   |convert    |@input|to|F         |@fahrenheit         |
-|check   |convert    |@input|to|C         |@celsius            |
-|check   |convert    |@input|to|K         |@kelvin             |
+Make sure the scenarios have access to Convert To.
 
-|script     |temperature fixture       |
-|temperature|20 C|is|68|F|20|C|293.15|K|
-|temperature|32 F|is|32|F|0 |C|273.15|K|
+!|Library          |
+|TemperatureFixture|
+
+Create a scenario providing the values to be checked. 
+
+|scenario    |temperature|input |is|fahrenheit?|F|celsius?|C|kelvin?|K|
+|$fahrenheit=|convert    |@input|to|F                                 |
+|$celsius=   |convert    |@input|to|C                                 |
+|$kelvin=    |convert    |@input|to|K                                 |
+
+Create a decision table checking the values.
 
 |decision:temperature is F C K  |
-|input|fahrenheit|celsius|kelvin|
+|input|fahrenheit?|celsius?|kelvin?|
 |20 C |68        |20     |293.15|
 |32 F |32        |0      |273.15|
 
-
+Create another scenario table that does a single calculation from one unit to another and returns the result.
 
 |scenario|Convert table _ _ _ _|input,from,to,result?|
 |$result=|convert              |@input @from |to |@to|
+
+Use that scenario in a decision table.
 
 |decision:convert table|
 |input |from|to|result?|
 |20    |C   |F |68     |
 |32    |F   |K |273.15 |
+
+To do a set of Celsius to Fahrenheit conversion tests, predefine the 'from' unit as C and 'to' as F, and don't specify the columns.
 
 |decision:convert table|given|from|C|to|F|
 |input                 |result?          |

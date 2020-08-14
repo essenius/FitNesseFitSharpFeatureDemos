@@ -1,5 +1,9 @@
+If you define a library, you don't necessarily need to define a script fixture.
+
 !|library|
 |Method And Property|
 
-|script|Echo Fixture|
-|show|echo|hello|
+Call the Data property from Method And Property.
+
+|script|
+|check|data|321|

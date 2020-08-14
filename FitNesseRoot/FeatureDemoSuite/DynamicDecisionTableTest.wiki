@@ -1,3 +1,8 @@
+In a dynamic decision table, you can work with column names dynamically. The example shows how that works.
+The fixture creates quarterly results for the first half year by adding the monthly results per quarter.
+For each input column, the Set method gets called with the column name and the value (see Set).
+The columns to be checked (with the question mark) use the Get method, with the column name as parameter.
+
 |dynamic decision:Dynamic Decision Fixture|
 |Jan |Feb |Mar |Apr|May|Jun|Q1?|Q2?|Total?|
 |100 |150 |175 |160|210|180|425|550|975   |

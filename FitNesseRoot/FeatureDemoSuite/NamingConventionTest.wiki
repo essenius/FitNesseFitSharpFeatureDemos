@@ -1,3 +1,7 @@
+!-FitSharp-! can find pretty much all members of a class, be it method, property or field, static or not, and public, internal or private.
+That said, normally you wouldn't use anything but public members as interfaces with !-FitSharp-!, to not make things very confusing.
+You can use Get or Set in advance of a field, method or property. Notice how it can even deal with leading underscores in field names.
+
 !|script                 |Naming Conventions   |
 |set Private Static Field|one                  |
 |Internal Static Field   |two                  |
@@ -44,7 +48,6 @@
 !|script|
 |public static method|eight                         |
 |check               |get public static method|eight|
-
 
 !-NamingConventions.cs-!
 {{{namespace TestSlim

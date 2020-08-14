@@ -1,9 +1,16 @@
+You can use query fixtures as script fixtures too. That way, you can inspect what comes back (useful for debugging), 
+and you can get a reference to the fixture via the 'get fixture' function.
+
 !|script|test query|2|
 |show|query|
-|$tq=|get fixture|
+|$query=|get fixture|
+
+Now we create an alias refering to the fixture
 
 |define alias|
-|my query|query: $tq|
+|my query|query: $query|
+
+And we run the query fixture using that alias.
 
 |my query|
 |n|2n|
@@ -11,25 +18,22 @@
 |2|4|
 
 !-TestQuery.cs-!:
-{{{using System.Collections.Generic;
+{{{using System.Collections.ObjectModel;
 
 namespace TestSlim
 {
     public class TestQuery
     {
-        readonly int _max;
+        private readonly int _max;
 
-        public TestQuery(int maxNum)
-        {
-            _max = maxNum;
-        }
+        public TestQuery(int maxNumber) => _max = maxNumber;
 
-        internal List<object> Query()
+        public Collection<object> Query()
         {
-            var rowList = new List<object>();
+            var rowList = new Collection<object>();
             for (var i = 1; i <= _max; i++)
             {
-                rowList.Add(new List<object> {new List<object> {"n", i}, new List<object> {"2n", 2*i}});
+                rowList.Add(new Collection<object> {new Collection<object> {"n", i}, new Collection<object> {"2n", 2 * i}});
             }
             return rowList;
         }

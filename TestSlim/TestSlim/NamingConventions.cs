@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2019 Rik Essenius
+﻿// Copyright 2015-2020 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -13,10 +13,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace TestSlim
 {
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global"),
-     SuppressMessage("ReSharper", "UnusedMember.Global"), SuppressMessage("ReSharper", "UnusedMember.Local"),
-     SuppressMessage("Code Quality", "IDE0051:Remove unused private members", Justification = "Demo for FitSharp")]
-
+    [SuppressMessage("Code Quality", "IDE0051:Remove unused private members", Justification = "Demonstration of FitSharp functionality")]
     public class NamingConventions
     {
         private static object _privateStaticField;

@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2019 Rik Essenius
+﻿// Copyright 2015-2020 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -15,8 +15,7 @@ using System.Linq;
 
 namespace TestSlim
 {
-    [SuppressMessage("Microsoft.Design", "CA1053:StaticHolderTypesShouldNotHaveConstructors", Justification = "FitSharp can't find static classes"),
-     SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("Microsoft.Design", "CA1053:StaticHolderTypesShouldNotHaveConstructors", Justification = "FitSharp can't find static classes")]
     public class EchoFixture
     {
         public static object EchoNull => null;

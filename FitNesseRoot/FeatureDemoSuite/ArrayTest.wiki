@@ -1,4 +1,4 @@
-#!define TEST_RUNNER {c:\apps\fitnesse\fitsharp\RunnerW.exe}
+Arrays can be a bit tricky. If a space is used after the comma, we move to a new cell. If not, we stay in the same cell.
 
 !|Script            |Array Test                                     |
 |Set Array          |[1, 2, 3]                                      |
@@ -15,21 +15,27 @@
 |Set Array          |[xpath://table, a, b]                          |
 |check              |Array Field          |0   |xpath://table       |
 
-!|scenario|do it with|input|
-|push fixture              |
-|start    |Array Test      |
-|Set Array|@input          |
-|Show     |Array           |
-|$call=   |get fixture     |
-|pop fixture               |
+We simulate the use of the fixture by value (i.e. not keeping changes after returning) via push fixture and pop fixture.
+We also provide a reference to the changed instance with the $call symbol.
 
-!|script   |Array Test|
-|show      |Array     |
-|set array |[q, r]    |
-|do it with|[a, b]    |
-|show      |Array     |
-|start     |$call     |
-|show      |Array     |
+!|scenario|use by value|input|
+|push fixture                |
+|start    |Array Test        |
+|Set Array|@input            |
+|Show     |Array             |
+|$call=   |get fixture       |
+|pop fixture                 |
+
+We set the array of a new fixture object, call the scenario, and show that the original value is still there after returning.
+Then, we revive the changed instance and show its value.
+
+!|script     |Array Test|
+|show        |Array     |
+|set array   |[q, r]    |
+|use by value|[a, b]    |
+|show        |Array     |
+|start       |$call     |
+|show        |Array     |
 
 !-ArrayTest.cs-!
 {{{using System.Collections.ObjectModel;
@@ -38,10 +44,12 @@ namespace TestSlim
 {
     public class ArrayTest
     {
-        internal Collection<Collection<string>> ArrayOfArrays { get; set; }
-        internal Collection<string> Array { get; set; }
-        internal string ArrayField(int index) => Array[index];
-        internal string ArrayOfArraysField(int index1, int index2) => ArrayOfArrays[index1][index2];
+        public Collection<Collection<string>> ArrayOfArrays { get; set; }
+        public Collection<string> Array { get; set; }
+        public string ArrayField(int index) => Array[index];
+        public string ArrayOfArraysField(int index1, int index2) => ArrayOfArrays[index1][index2];
     }
 }
+}}}
+
 }}}

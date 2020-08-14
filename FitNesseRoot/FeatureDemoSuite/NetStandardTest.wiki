@@ -1,6 +1,6 @@
 !path "TestSlim\NetStandardTestSlim\bin\Debug\netstandard1.4\NetStandardTestSlim.dll"
 
-.Net Standard is supported up to level 1.4
+.Net Standard is supported up to level 1.4. Use dotnet as test runner to support 2.x
 
 !|import|
 |NetStandardTestSlim|

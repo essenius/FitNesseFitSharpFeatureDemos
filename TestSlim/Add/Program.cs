@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2019 Rik Essenius
+﻿// Copyright 2015-2020 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -13,13 +13,13 @@ using System;
 
 namespace Add
 {
-    public class Program
+    public sealed class Program
     {
         public static int Main(string[] args)
         {
-            if (args.Length >= 2 && long.TryParse(args[0], out var a) && long.TryParse(args[1], out var b))
+            if (args != null && args.Length >= 2 && long.TryParse(args[0], out var a) && long.TryParse(args[1], out var b))
             {
-                Console.WriteLine(new Calc().Add(a, b));
+                Console.WriteLine(Calc.Add(a, b));
                 return 0;
             }
             Console.Error.WriteLine("Need two long integers as parameters");

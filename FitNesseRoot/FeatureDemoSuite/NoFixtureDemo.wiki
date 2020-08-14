@@ -2,6 +2,7 @@
 Test
 ---
 Because !-FitSharp-! works with plain C# objects, sometimes you don’t even need a fixture!
+You do need the objects to be non-static for FitSharp to find them.
 
 !path "TestSlim\Add\bin\debug\Add.exe"
 
@@ -29,13 +30,13 @@ Because !-FitSharp-! works with plain C# objects, sometimes you don’t even nee
 
 namespace Add
 {
-    public class Program
+    public sealed class Program
     {
         public static int Main(string[] args)
         {
-            if (args.Length >= 2 && long.TryParse(args[0], out var a) && long.TryParse(args[1], out var b))
+            if (args != null && args.Length >= 2 && long.TryParse(args[0], out var a) && long.TryParse(args[1], out var b))
             {
-                Console.WriteLine(new Calc().Add(a, b));
+                Console.WriteLine(Calc.Add(a, b));
                 return 0;
             }
             Console.Error.WriteLine("Need two long integers as parameters");

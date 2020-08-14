@@ -1,4 +1,6 @@
-The way !-FitSharp-! resolves methods and properties can be confusing sometimes. In this example, you can't use the !-GetData-! or !-SetData-! methods because the Data property will be found first. Therefore the recommendation is to standardize using Properties, since the C# convention favors that. You will also see that the static analysis engine will complain about the existence of both Data and !-GetData-! (CA1721), and recommends to use a Property for !-GetData-! (CA1024).
+The way !-FitSharp-! resolves methods and properties can be confusing sometimes. In this example, you can't use the !-GetData-! or !-SetData-! methods because the Data property will be found first. 
+Therefore the recommendation is to standardize using Properties, since the C# convention favors that. You will also see that the static analysis engine will complain about the existence of both Data and 
+!-GetData-! (CA1721), and recommends to use a Property for !-GetData-! (CA1024).
 
 !|Script |Method And Property                                      |
 |note    |calls the Data property since that is found first        |
@@ -23,3 +25,4 @@ The way !-FitSharp-! resolves methods and properties can be confusing sometimes.
 }
 }}}
 
+Note: order of the methods is important here!

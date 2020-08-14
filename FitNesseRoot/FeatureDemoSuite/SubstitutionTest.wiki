@@ -1,10 +1,16 @@
 ---
 Suites: variables, symbols
 ---
+
+Use of variables can be tricky. Note how it is different when you use the ! before a table start row.
+
 !define today {!today (yyyyMMdd)}
 
+The variable value gets resolved in the symbol here
 |script |Echo Fixture |
 |$today=|echo|${today}|
+
+But here the value does not get resolved.
 
 !|script                      |
 |$today2= |echo|${today}      |

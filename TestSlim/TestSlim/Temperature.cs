@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2019 Rik Essenius
+﻿// Copyright 2015-2020 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -10,17 +10,14 @@
 // See the License for the specific language governing permissions and limitations under the License.
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace TestSlim
 {
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global"), SuppressMessage("ReSharper", "UnusedMember.Global"),
-     SuppressMessage("ReSharper", "UnusedMember.Local")]
     public class Temperature
     {
-        private const double AbsZeroInC = -273.15;
-        private const double AbsZeroInF = -459.67;
-        private const int Digits = 10;
+        private const double AbsoluteZeroInCelsius = -273.15;
+        private const double AbsoluteZeroInFahrenheit = -459.67;
+        private const int PrecisionInDigits = 10;
 
         public Temperature(string input)
         {
@@ -29,10 +26,10 @@ namespace TestSlim
             switch (scale)
             {
                 case "F":
-                    Value = Math.Round((temperature - AbsZeroInF) * 5 / 9, Digits);
+                    Value = Math.Round((temperature - AbsoluteZeroInFahrenheit) * 5 / 9, PrecisionInDigits);
                     break;
                 case "C":
-                    Value = temperature - AbsZeroInC;
+                    Value = temperature - AbsoluteZeroInCelsius;
                     break;
                 case "K":
                     Value = temperature;
@@ -51,9 +48,9 @@ namespace TestSlim
             switch (scale?.Substring(0, 1).ToUpperInvariant())
             {
                 case "F":
-                    return Math.Round(Value * 9 / 5 + AbsZeroInF, Digits);
+                    return Math.Round(Value * 9 / 5 + AbsoluteZeroInFahrenheit, PrecisionInDigits);
                 case "C":
-                    return Value + AbsZeroInC;
+                    return Value + AbsoluteZeroInCelsius;
                 case "K":
                     return Value;
                 default:

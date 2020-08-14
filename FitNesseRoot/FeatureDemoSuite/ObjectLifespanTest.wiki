@@ -25,10 +25,10 @@ The scenario table creates a new instance and shows it is a different one
 {
     public class MemoObject
     {
-        internal MemoObject(string data) => Data = data;
-        internal MemoObject() => Data = string.Empty;
-        internal string Data { get; set; }
-        internal int Id => GetHashCode();
+        public MemoObject(string data) => Data = data;
+        public MemoObject() => Data = string.Empty;
+        public string Data { get; set; }
+        public int Id => GetHashCode();
     }
 }
 }}}

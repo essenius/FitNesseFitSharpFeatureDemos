@@ -1,10 +1,13 @@
-The argument name matching can sometimes behave unexpectedly. With the matching, FitNesse stops after it finds a matching name, even if there is an argument that would match the complete name. So instead of taking the value of @param1, the value of @param is taken with the value '1' appended to it. The workaround is never to have a parameters with names where one contains the other. E.g. using @param1 and @param2 would not have caused issues.
+Parameter names in scenarios should not start with the name of another parameter, or that other parameter value will get inserted instead.
+The argument name matching can sometimes behave unexpectedly. With the matching, FitNesse stops after it finds a matching name, even if there
+is an argument that would match the complete name. So instead of taking the value of @param1, the value of @param is taken with the value '1' appended to it. 
+The workaround is never to have a parameters where one name starts with the name of another. E.g. using @param1 and @param2 would not have caused issues.
 
-|scenario|do something with|param  |and|param1|
-|check   |echo             |@param |this      |
-|check   |echo             |@param1|that      |
+|scenario|test with|param  |and|param1|
+|check   |echo     |@param |this      |
+|check   |echo     |@param1|that      |
 
-!|script          |Echo Fixture |
-|do something with|this|and|that|
+!|script  |Echo Fixture |
+|test with|this|and|that|
 
 !-EchoFixture.cs-!: see EchoTest
