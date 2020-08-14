@@ -15,12 +15,9 @@ namespace TestSlim
 {
     public class ArrayTest
     {
-        public Collection<Collection<string>> ArrayOfArrays { get; set; }
-
         public Collection<string> Array { get; set; }
-
+        public Collection<Collection<string>> ArrayOfArrays { get; set; }
         public string ArrayField(int index) => Array[index];
-
         public string ArrayOfArraysField(int index1, int index2) => ArrayOfArrays[index1][index2];
     }
 }

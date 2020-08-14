@@ -13,7 +13,6 @@ using System;
 
 namespace TestSlim
 {
-
     public class ParameterTypes
     {
         public static int AddTo(int input1, int input2) => input1 + input2;

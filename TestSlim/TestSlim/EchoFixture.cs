@@ -19,8 +19,8 @@ namespace TestSlim
     public class EchoFixture
     {
         public static object EchoNull => null;
-        public static object Echo(object input) => input;
 
-        public static string Concat(Collection<string>input) => input.Aggregate(string.Empty, (current, entry) => current + entry);
+        public static string Concat(Collection<string> input) => input.Aggregate(string.Empty, (current, entry) => current + entry);
+        public static object Echo(object input) => input;
     }
 }

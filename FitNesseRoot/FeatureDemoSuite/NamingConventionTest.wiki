@@ -54,37 +54,34 @@ You can use Get or Set in advance of a field, method or property. Notice how it 
 {
     public class NamingConventions
     {
+        private static object _privateStaticField;
+        internal static object InternalStaticField;
+        public static object PublicStaticField;
         private object _privateField;
         internal object InternalField;
         public object PublicField;
 
-        private static object _privateStaticField;
-        internal static object InternalStaticField;
-        public static object PublicStaticField;
-
+        internal object InternalProperty { get; set; }
         internal static object InternalStaticProperty { get; set; }
+        private object PrivateProperty { get; set; }
         private static object PrivateStaticProperty { get; set; }
+        public object PublicProperty { get; set; }
         public static object PublicStaticProperty { get; set; }
 
-        internal object InternalProperty { get; set; }
-        private object PrivateProperty { get; set; }
-        public object PublicProperty { get; set; }
-
-        internal static object InternalStaticMethod() => InternalStaticField;
-        private static object PrivateStaticMethod() => _privateStaticField;
-        public static object PublicStaticMethod() => PublicStaticField;
-
-        internal static void InternalStaticMethod(object value) => InternalStaticField = value;
-        private static void PrivateStaticMethod(object value) => _privateStaticField = value;
-        public static void PublicStaticMethod(object value) => PublicStaticField = value;
-
         internal object InternalMethod() => InternalField;
-        private object PrivateMethod() => _privateField;
-
-        public object PublicMethod() => PublicField;
         internal void InternalMethod(object value) => InternalField = value;
+        internal static object InternalStaticMethod() => InternalStaticField;
+        internal static void InternalStaticMethod(object value) => InternalStaticField = value;
+
+        private object PrivateMethod() => _privateField;
         private void PrivateMethod(object value) => _privateField = value;
+        private static object PrivateStaticMethod() => _privateStaticField;
+        private static void PrivateStaticMethod(object value) => _privateStaticField = value;
+        
+        public object PublicMethod() => PublicField;
         public void PublicMethod(object value) => PublicField = value;
+        public static object PublicStaticMethod() => PublicStaticField;
+        public static void PublicStaticMethod(object value) => PublicStaticField = value;
     }
 }
 }}}

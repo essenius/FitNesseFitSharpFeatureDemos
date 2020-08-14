@@ -28,28 +28,26 @@ namespace TestSlim
         [SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields", Justification = "Demonstration of FitSharp functionality")]
         public object PublicField;
 
+        internal object InternalProperty { get; set; }
         internal static object InternalStaticProperty { get; set; }
+        private object PrivateProperty { get; set; }
         private static object PrivateStaticProperty { get; set; }
+        public object PublicProperty { get; set; }
         public static object PublicStaticProperty { get; set; }
 
-        internal object InternalProperty { get; set; }
-        private object PrivateProperty { get; set; }
-        public object PublicProperty { get; set; }
-
-        internal static object InternalStaticMethod() => InternalStaticField;
-        private static object PrivateStaticMethod() => _privateStaticField;
-        public static object PublicStaticMethod() => PublicStaticField;
-
-        internal static void InternalStaticMethod(object value) => InternalStaticField = value;
-        private static void PrivateStaticMethod(object value) => _privateStaticField = value;
-        public static void PublicStaticMethod(object value) => PublicStaticField = value;
-
         internal object InternalMethod() => InternalField;
+        internal void InternalMethod(object value) => InternalField = value;
+        internal static object InternalStaticMethod() => InternalStaticField;
+        internal static void InternalStaticMethod(object value) => InternalStaticField = value;
+        
         private object PrivateMethod() => _privateField;
+        private void PrivateMethod(object value) => _privateField = value;
+        private static object PrivateStaticMethod() => _privateStaticField;
+        private static void PrivateStaticMethod(object value) => _privateStaticField = value;
 
         public object PublicMethod() => PublicField;
-        internal void InternalMethod(object value) => InternalField = value;
-        private void PrivateMethod(object value) => _privateField = value;
         public void PublicMethod(object value) => PublicField = value;
+        public static object PublicStaticMethod() => PublicStaticField;
+        public static void PublicStaticMethod(object value) => PublicStaticField = value;
     }
 }

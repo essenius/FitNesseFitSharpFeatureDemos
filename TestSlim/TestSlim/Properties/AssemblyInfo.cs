@@ -29,4 +29,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("03e5c6ad-4d62-4649-884c-2aa651bb7c42")]
 
 [assembly: AssemblyVersion("2.2.2")]
-[assembly:InternalsVisibleTo("TestSlimTest")]
+[assembly: InternalsVisibleTo("TestSlimTest")]

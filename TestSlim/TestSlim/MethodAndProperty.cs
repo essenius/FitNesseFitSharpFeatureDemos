@@ -19,6 +19,7 @@ namespace TestSlim
 
         [SuppressMessage("Naming", "CA1721:Property names should not match get methods", Justification = "Demonstrating FitSharp behavior")]
         public static int Data { get; set; } = 321;
+
         public static int GetData() => _privateData;
         public static void SetData(int value) => _privateData = value;
     }

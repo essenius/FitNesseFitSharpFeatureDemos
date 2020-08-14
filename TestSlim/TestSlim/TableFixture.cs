@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2019 Rik Essenius
+﻿// Copyright 2015-2020 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -19,8 +19,7 @@ namespace TestSlim
 
     public class TableFixture
     {
-        private static RowList MakeResultRow(RowList input) => new RowList {"", input[0]};
-
         public static TableList DoTable(TableList table) => table.Select(MakeResultRow).ToList();
+        private static RowList MakeResultRow(RowList input) => new RowList {"", input[0]};
     }
 }

@@ -23,15 +23,25 @@ namespace TestSlim
         private double _radius;
         private double _yCoordinate;
 
+        public double Angle { get; set; }
         public int Decimals { get; set; } = 5;
 
+        public double MaxAngle { get; private set; }
         public double X { get; private set; }
 
-        public double Angle { get; set; }
+        public void BeginTable() => _log.AppendLine("BeginTable");
 
-        public double MaxAngle { get; private set; }
-        public double Y() => _yCoordinate;
+        public void EndTable() => _log.AppendLine("EndTable");
 
+        public void Execute()
+        {
+            _log.AppendLine($"Execute with R= {_radius} and Angle={Angle}");
+            var radians = Angle / 180 * Math.PI;
+            X = Math.Round(_radius * Math.Cos(radians), Decimals);
+            _yCoordinate = Math.Round(_radius * Math.Sin(radians), Decimals);
+        }
+
+        public void Reset() => _log.AppendLine("Reset");
         public void SetR(double value) => _radius = value;
 
         public void Table(Collection<Collection<string>> inputTable)
@@ -47,18 +57,6 @@ namespace TestSlim
                 .Concat(new[] {0.0}).Max();
         }
 
-        public void BeginTable() => _log.AppendLine("BeginTable");
-
-        public void EndTable() => _log.AppendLine("EndTable");
-
-        public void Execute()
-        {
-            _log.AppendLine($"Execute with R= {_radius} and Angle={Angle}");
-            var radians = Angle / 180 * Math.PI;
-            X = Math.Round(_radius * Math.Cos(radians), Decimals);
-            _yCoordinate = Math.Round(_radius * Math.Sin(radians), Decimals);
-        }
-
-        public void Reset() => _log.AppendLine("Reset");
+        public double Y() => _yCoordinate;
     }
 }
