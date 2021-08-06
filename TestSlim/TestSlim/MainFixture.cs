@@ -15,13 +15,13 @@ namespace TestSlim
     {
         // constructor must be public for FitSharp to instantiate the class
         public MainFixture() => SubFixture = new SubFixture();
+
         internal SubFixture SubFixture { get; }
     }
 
     public class SubFixture
     {
-        // constructor can be internal as FitSharp doesn't instantiate it directly
-        internal SubFixture() => SubProperty = "demo";
+        public SubFixture() => SubProperty = "demo";
 
         internal string SubProperty { get; }
     }

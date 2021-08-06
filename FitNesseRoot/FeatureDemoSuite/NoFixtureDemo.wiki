@@ -2,12 +2,7 @@
 Test
 ---
 Because !-FitSharp-! works with plain C# objects, sometimes you don’t even need a fixture!
-You do need the objects to be non-static for FitSharp to find them.
-
-!path "TestSlim\Add\bin\debug\Add.exe"
-
-!| import|
-|Add     |
+You do need the objects to be non-static for !-FitSharp-! to find them.
 
 |script|Calc      |
 |check |Add|5||4|9|

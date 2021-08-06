@@ -23,20 +23,13 @@ namespace TestSlim
         {
             var scale = input?.Substring(input.Length - 1).ToUpperInvariant();
             var temperature = Convert.ToDouble(input?.Substring(0, input.Length - 1).Trim());
-            switch (scale)
+            Value = scale switch
             {
-                case "F":
-                    Value = Math.Round((temperature - AbsoluteZeroInFahrenheit) * 5 / 9, PrecisionInDigits);
-                    break;
-                case "C":
-                    Value = temperature - AbsoluteZeroInCelsius;
-                    break;
-                case "K":
-                    Value = temperature;
-                    break;
-                default:
-                    throw new FormatException("Expected a double, ending with F, C or K");
-            }
+                "F" => Math.Round((temperature - AbsoluteZeroInFahrenheit) * 5 / 9, PrecisionInDigits),
+                "C" => (temperature - AbsoluteZeroInCelsius),
+                "K" => temperature,
+                _ => throw new FormatException("Expected a double, ending with F, C or K")
+            };
         }
 
         public double Value { get; }
@@ -45,17 +38,13 @@ namespace TestSlim
 
         internal double ValueIn(string scale)
         {
-            switch (scale?.Substring(0, 1).ToUpperInvariant())
+            return scale?.Substring(0, 1).ToUpperInvariant() switch
             {
-                case "F":
-                    return Math.Round(Value * 9 / 5 + AbsoluteZeroInFahrenheit, PrecisionInDigits);
-                case "C":
-                    return Value + AbsoluteZeroInCelsius;
-                case "K":
-                    return Value;
-                default:
-                    throw new FormatException($"Unrecognized scale: {scale}");
-            }
+                "F" => Math.Round(Value * 9 / 5 + AbsoluteZeroInFahrenheit, PrecisionInDigits),
+                "C" => (Value + AbsoluteZeroInCelsius),
+                "K" => Value,
+                _ => throw new FormatException($"Unrecognized scale: {scale}")
+            };
         }
     }
 }

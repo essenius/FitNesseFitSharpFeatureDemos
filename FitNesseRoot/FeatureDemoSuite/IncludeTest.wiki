@@ -4,4 +4,4 @@ Show that both variables and symbols are passed on from include files
 
 |script                                       |
 |check|echo|${IncludedVariable}|Variable Value|
-|check|echo|$IncludedSymbol    |Symbol Value  |
+|check|echo|$includedSymbol    |Symbol Value  |

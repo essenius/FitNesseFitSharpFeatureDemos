@@ -1,8 +1,6 @@
 There are some peculiarities in the way FitNesse handles symbols. In this example we want text '_input' be concatenated to the value of !-$symbol-!, and create a new symbol !-$symbolInput1-! with that new value. But we can't make that work, because $symbol_input is also a valid symbol name. 
 
-!|import |
-|TestSlim|
-see how though the substituted value doesnt' make it to the assignment
+see how though the substituted value doesn't make it to the assignment
 
 !|script       |Echo Fixture                        |
 |$symbol=      |echo|id:my_combo                    |
