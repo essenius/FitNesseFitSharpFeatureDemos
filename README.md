@@ -13,7 +13,7 @@ corresponding C# fixtures.
 1. Start FitNesse with the root repo folder  as the data folder, and the assembly folder as the current directory:
 ```
     cd /D C:\Data\FitNesseDemo\TestLim\TestSlim\bin\debug\net5.0
-	java -jar C:\Apps\FitNesse\fitnesse-standalone.jar -d C:\Data\FitNesseDemo -e 0
+    java -jar C:\Apps\FitNesse\fitnesse-standalone.jar -d C:\Data\FitNesseDemo -e 0
 ```
 8. Open a browser and enter the URL http://localhost:8080/FeatureDemoSuite?suite
 
