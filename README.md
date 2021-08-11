@@ -5,7 +5,7 @@ corresponding C# fixtures.
 # Getting Started
 1. Ensure you have Java installed (1.8 or higher)
 1. Download FitNesse (http://fitnesse.org) and install it to ```C:\Apps\FitNesse```
-1. Install FitSharp 2.8.2.1 or higher into C:\Apps\FitSharp. THe easiest way to do that is using the NuGet CLI which you can get from from https://dist.nuget.org/win-x86-commandline/latest/nuget.exe:
+1. Install FitSharp 2.8.2.1 or higher into C:\Apps\FitSharp. The easiest way to do that is using the NuGet CLI which you can get from from https://dist.nuget.org/win-x86-commandline/latest/nuget.exe:
 ```
 nuget install fitsharp -OutputDirectory C:\Apps -ExcludeVersion
 ```
