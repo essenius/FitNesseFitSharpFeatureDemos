@@ -1,23 +1,15 @@
 # Introduction 
-This repo contains a demo suite on how to use FitNesse with FitSharp and C# fixtures. It include FitNesse test pages as well as 
-corresponding C# fixtures.
+This repo contains a demo suite on how to use FitNesse with FitSharp and C# fixtures, primarily focusing on FitNesse Wiki capabilities. 
+It include FitNesse test pages as well as corresponding C# fixtures.
 
-# Getting Started
-1. Ensure you have Java installed (1.8 or higher)
-1. Download FitNesse (http://fitnesse.org) and install it to ```C:\Apps\FitNesse```
-1. Install FitSharp 2.8.2.1 or higher into C:\Apps\FitSharp. The easiest way to do that is using the NuGet CLI which you can get from from https://dist.nuget.org/win-x86-commandline/latest/nuget.exe:
-```
-nuget install fitsharp -OutputDirectory C:\Apps -ExcludeVersion
-```
-4. Clone the repo to a local folder (```C:\Data\FitNesseDemo```)
-5. If you took a different folder name for FitSharp, update ```plugins.properties``` to point to the right folder
-6. Build all projects in the solution TestSlim
-7. Start FitNesse with the root repo folder  as the data folder, and the assembly folder as the current directory:
-```
-    cd /D C:\Data\FitNesseDemo\TestLim\TestSlim\bin\debug\net5.0
-    java -jar C:\Apps\FitNesse\fitnesse-standalone.jar -d C:\Data\FitNesseDemo -e 0
-```
-8. Open a browser and enter the URL http://localhost:8080/FeatureDemoSuite?suite
+# Installation
+The steps to install are very similar to that of installing the [FibonacciDemo](../../../FitNesseFitSharpFibonacciDemo).
+
+Differences are:
+* Download the repo code as a zip file and extract the contents of the folder ```FitNesseFitSharpFeatureDemos```. 
+* Build command becomes: `dotnet build %LOCALAPPDATA%\FitNesse\TestSlim\TestSlim.sln`
+* Go to folder: `cd /D %LOCALAPPDATA%\FitNesse\TestSlim\TestSlim\bin\debug\net5.0`
+* Run the suite: Open a browser and enter the URL http://localhost:8080/FeatureDemoSuite?suite
 
 # Contribute
 Enter an issue or provide a pull request. 
