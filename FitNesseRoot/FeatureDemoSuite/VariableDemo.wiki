@@ -1,0 +1,8 @@
+|My Java Variable         |${MyJavaVariable} |
+|Working folder           |${user.dir}       |
+|Test System:            |${TEST_SYSTEM}     |
+|Slim timeout:            |${slim.timeout}   |
+|!-FitSharp-! home folder:|${FITSHARP_HOME}  |
+|FitNesse root:           |${FITNESSE_ROOT}  |
+|Command pattern:         |${COMMAND_PATTERN}|
+|Test Runner:             |${TEST_RUNNER}    |

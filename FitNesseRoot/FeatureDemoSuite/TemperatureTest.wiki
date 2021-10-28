@@ -2,19 +2,21 @@
 Suites: variables, symbols
 ---
 This test shows how you can use objects as symbol values. The Convert fixture function expects a Temperature object. So !-FitSharp-! will call the static Parse method on Temperature to try and parse the parameter value and return the new object as the input parameter. Then !-ConvertTo-! can call the !-ValueIn-! method of that object to convert the value. 
+
 !define CF_Equality {-40} 
-!define KF_Equality {574.5875}
+#!define KF_Equality {574.5875}
 
 !|script|TemperatureFixture                          |
 |check  |convert|68 F            |to|C|20            |
 |check  |convert|${CF_Equality} C|to|F|${CF_Equality}|
-|check  |convert|${KF_Equality}K |to|F|${KF_Equality}|
+#|check  |convert|${KF_Equality}K |to|F|${KF_Equality}|
 
 !define TemperatureC {20}
 !define TemperatureF {${=${TemperatureC} * 9/5 + 32=}}
 
-!|script                                             |
-|check|convert|${TemperatureF} F|to|C|${TemperatureC}|
+!|script|TemperatureFixture                            |
+|check  |convert|${TemperatureF} F|to|C|${TemperatureC}|
+
 Redefine the variable containing temperature in centigrade and the Fahrenheit value will be re-evaluated as well 
 !define TemperatureC {25}
 
@@ -27,6 +29,15 @@ Get a reference to a temperature object holding the temperature of boiling water
 
 !|script|Temperature Fixture      |
 |check  |convert|$boiling|to|C|100|
+
+!define TemperatureC {40}
+
+|script|Echo Fixture|
+|$TemperatureC=|echo|${TemperatureC} C|
+
+|Script|Temperature Fixture|
+|$TemperatureF=|Convert|$TemperatureC|to|F|
+|Check|Convert|$TemperatureF F|to|C|${TemperatureC}|
 
 !-TemperatureFixture-!.cs
 {{{namespace TestSlim

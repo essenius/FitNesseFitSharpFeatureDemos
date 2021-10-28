@@ -1,0 +1,7 @@
+!|Suite                  |
+|Page|FeatureDemoSuite   |
+|Title|TestPage[13]{0,1}$|
+
+!|Suite               |
+|Page|FeatureDemoSuite|
+|Content|ArrayTest    |
