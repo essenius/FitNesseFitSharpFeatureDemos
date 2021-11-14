@@ -27,5 +27,6 @@ Then the outcome should be 68
 And When I convert it to Kelvin
 Then the outcome should be 293.15
 ]!
+
 Temperature.cs: see TemperatureTest
 !-EchoFixture-!.cs: see EchoTest

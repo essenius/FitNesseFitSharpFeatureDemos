@@ -7,6 +7,7 @@ Use of variables can be tricky. Note how it is different when you use the ! befo
 !define today {!today (yyyyMMdd)}
 
 The variable value gets resolved in the symbol here
+
 |script |Echo Fixture |
 |$today=|echo|${today}|
 
