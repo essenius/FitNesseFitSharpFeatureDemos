@@ -8,10 +8,12 @@ The steps to install are very similar to that of installing the [FibonacciDemo](
 Differences are:
 * Download the repo code as a zip file and extract the contents of the folder ``FitNesseFitSharpFeatureDemos-master`. 
 * Go to solution folder: `cd /D %LOCALAPPDATA%\FitNesse\TestSlim`
-* Build fixture solution: `dotnet build --configuration release TestSlim.sln`
-* Go to fixture folder: `cd TestSlim`
-* Publish fixture: `dotnet publish --output bin\Deploy\net5.0 --framework net5.0 --configuration release TestSlim.csproj`
-* Go to the assembly folder and start FitNesse
+* If you have .NET SDK installed:
+    * Build fixture solution: `dotnet build --configuration release TestSlim.sln`
+    * Go to fixture folder: `cd TestSlim`
+    * Publish fixture: `dotnet publish --output bin\Deploy\net5.0 --framework net5.0 --configuration release TestSlim.csproj`
+* If you do not have .NET SDK installed: download `TestSlim.zip` from the latest [release](../../releases) and extract it into `TestSlim\TestSlim`
+* Go to the assembly folder `TestSlim\TestSlim\bin\Deploy\net5.0` and start FitNesse.
 * Run the suite: Open a browser and enter the URL http://localhost:8080/FitSharpDemos.FeatureDemoSuite?suite
 
 # Contribute
