@@ -11,7 +11,7 @@ Differences are:
 * If you have .NET SDK installed:
     * Build fixture solution: `dotnet build --configuration release TestSlim.sln`
     * Go to fixture folder: `cd TestSlim`
-    * Publish fixture: `dotnet publish --output bin\Deploy\net6.0 --framework net5.0 --configuration release TestSlim.csproj`
+    * Publish fixture: `dotnet publish --output bin\Deploy\net6.0 --framework net6.0 --configuration release TestSlim.csproj`
 * If you do not have .NET SDK installed: download `TestSlim.zip` from the latest [release](../../releases) and extract it into `TestSlim\TestSlim`
 * Go to the assembly folder `TestSlim\TestSlim\bin\Deploy\net6.0` and start FitNesse.
 * Run the suite: Open a browser and enter the URL http://localhost:8080/FitSharpDemos.FeatureDemoSuite?suite

@@ -15,16 +15,12 @@ With that, we can do nifty things like making fixtures from those instances and 
 {
     public class MainFixture
     {
-        // constructor must be public for FitSharp to be able to find and instantiate the class
-        public MainFixture() => SubFixture = new SubFixture();
-        internal SubFixture SubFixture { get; }
+        internal SubFixture SubFixture { get; } = new SubFixture();
     }
 
     public class SubFixture
     {
-        // constructor can be internal as FitSharp doesn't instantiate it directly
-        internal SubFixture() => SubProperty = "demo";
-        internal string SubProperty { get; }
+        internal string SubProperty { get; } = "demo";
     }
 }
 }}}

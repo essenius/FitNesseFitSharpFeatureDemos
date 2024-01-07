@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -21,19 +21,19 @@ namespace TestSlimTest
         [TestMethod, ExpectedException(typeof(FormatException))]
         public void TemperatureConstructorNullFormatExceptionTest()
         {
-            var _ = new Temperature(null);
+            _ = new Temperature(null);
         }
 
         [TestMethod, ExpectedException(typeof(FormatException))]
         public void TemperatureConstructorWrongScaleTest()
         {
-            var _ = new Temperature("20 Q");
+            _ = new Temperature("20 Q");
         }
 
         [TestMethod, ExpectedException(typeof(FormatException))]
         public void TemperatureConstructorWrongValueTest()
         {
-            var _ = new Temperature("1.q C");
+            _ = new Temperature("1.q C");
         }
 
         [TestMethod]
@@ -51,13 +51,13 @@ namespace TestSlimTest
         [TestMethod, ExpectedException(typeof(FormatException))]
         public void TemperatureValueInFormatExceptionTest()
         {
-            var _ = new Temperature("20 C").ValueIn("Q");
+            _ = new Temperature("20 C").ValueIn("Q");
         }
 
         [TestMethod, ExpectedException(typeof(FormatException))]
         public void TemperatureValueInNullFormatExceptionTest()
         {
-            var _ = new Temperature("20 C").ValueIn(null);
+            _ = new Temperature("20 C").ValueIn(null);
         }
 
         [TestMethod]

@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -13,16 +13,11 @@ namespace TestSlim
 {
     public class MainFixture
     {
-        // constructor must be public for FitSharp to instantiate the class
-        public MainFixture() => SubFixture = new SubFixture();
-
-        internal SubFixture SubFixture { get; }
+        internal SubFixture SubFixture { get; } = new SubFixture();
     }
 
     public class SubFixture
     {
-        public SubFixture() => SubProperty = "demo";
-
-        internal string SubProperty { get; }
+        internal string SubProperty { get; } = "demo";
     }
 }
