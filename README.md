@@ -1,8 +1,10 @@
-# Introduction 
+# Feature Demos ![workflow badge](../../actions/workflows/ci.yml/badge.svg)
+
+## Introduction 
 This repo contains a demo suite on how to use FitNesse with FitSharp and C# fixtures, primarily focusing on FitNesse Wiki capabilities. 
 It include FitNesse test pages as well as corresponding C# fixtures.
 
-# Installation
+## Installation
 The steps to install are very similar to that of installing the [FibonacciDemo](../../../FitNesseFitSharpFibonacciDemo).
 
 Differences are:
@@ -16,5 +18,5 @@ Differences are:
 * Go to the assembly folder `TestSlim\TestSlim\bin\Deploy\net6.0` and start FitNesse.
 * Run the suite: Open a browser and enter the URL http://localhost:8080/FitSharpDemos.FeatureDemoSuite?suite
 
-# Contribute
+## Contribute
 Enter an issue or provide a pull request. 
