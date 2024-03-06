@@ -1,4 +1,4 @@
-# Feature Demos ![workflow badge](../../actions/workflows/ci.yml/badge.svg)
+# Feature Demos ![workflow badge](../../actions/workflows/testslim-ci.yml/badge.svg)
 
 ## Introduction 
 This repo contains a demo suite on how to use FitNesse with FitSharp and C# fixtures, primarily focusing on FitNesse Wiki capabilities. 
