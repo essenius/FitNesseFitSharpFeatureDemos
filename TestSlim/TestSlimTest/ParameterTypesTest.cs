@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -12,18 +12,17 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestSlim;
 
-namespace TestSlimTest
+namespace TestSlimTest;
+
+[TestClass]
+public class ParameterTypesTest
 {
-    [TestClass]
-    public class ParameterTypesTest
+    [TestMethod]
+    public void ParameterTypesNegateTest()
     {
-        [TestMethod]
-        public void ParameterTypesNegateTest()
-        {
-            Assert.AreEqual(false, ParameterTypes.NegateObject(true));
-            Assert.AreEqual("not ok", ParameterTypes.NegateObject("ok"));
-            Assert.AreEqual(-1L, ParameterTypes.NegateObject(1));
-            Assert.AreEqual("anything but null", ParameterTypes.NegateObject(null));
-        }
+        Assert.AreEqual(false, ParameterTypes.NegateObject(true));
+        Assert.AreEqual("not ok", ParameterTypes.NegateObject("ok"));
+        Assert.AreEqual(-1L, ParameterTypes.NegateObject(1));
+        Assert.AreEqual("anything but null", ParameterTypes.NegateObject(null));
     }
 }

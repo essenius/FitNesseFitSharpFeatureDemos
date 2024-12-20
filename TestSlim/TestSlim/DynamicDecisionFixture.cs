@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -13,44 +13,43 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TestSlim
+namespace TestSlim;
+
+public class DynamicDecisionFixture
 {
-    public class DynamicDecisionFixture
+    private readonly List<string> _q1Months = ["JAN", "FEB", "MAR"];
+    private readonly List<string> _q2Months = ["APR", "MAY", "JUN"];
+
+    private readonly Dictionary<string, double> _totals = new()
     {
-        private readonly List<string> _q1Months = new List<string> {"JAN", "FEB", "MAR"};
-        private readonly List<string> _q2Months = new List<string> {"APR", "MAY", "JUN"};
+        {"Q1", 0.0},
+        {"Q2", 0.0},
+        {"TOTAL", 0.0}
+    };
 
-        private readonly Dictionary<string, double> _totals = new Dictionary<string, double>
+    public double Get(string columnName) => _totals[columnName.ToUpperInvariant()];
+
+    public void Reset()
+    {
+        foreach (var key in _totals.Keys.ToList())
         {
-            {"Q1", 0.0},
-            {"Q2", 0.0},
-            {"TOTAL", 0.0}
-        };
-
-        public double Get(string columnName) => _totals[columnName.ToUpperInvariant()];
-
-        public void Reset()
-        {
-            foreach (var key in _totals.Keys.ToList())
-            {
-                _totals[key] = 0.0;
-            }
+            _totals[key] = 0.0;
         }
+    }
 
-        public void Set(string columnName, double value)
+    public void Set(string columnName, double value)
+    {
+        _totals["TOTAL"] += value;
+        var month = columnName.ToUpperInvariant();
+        if (_q1Months.Contains(month))
         {
-            _totals["TOTAL"] += value;
-            var month = columnName.ToUpperInvariant();
-            if (_q1Months.Contains(month))
-            {
-                _totals["Q1"] += value;
-                return;
-            }
-            if (!_q2Months.Contains(month))
-            {
-                throw new ArgumentException("Column name must be JAN-JUN");
-            }
-            _totals["Q2"] += value;
+            _totals["Q1"] += value;
+            return;
         }
+        if (!_q2Months.Contains(month))
+        {
+            throw new ArgumentException("Column name must be JAN-JUN");
+        }
+        _totals["Q2"] += value;
     }
 }

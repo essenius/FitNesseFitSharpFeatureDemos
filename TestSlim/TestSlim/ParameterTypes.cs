@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -11,29 +11,28 @@
 
 using System;
 
-namespace TestSlim
+namespace TestSlim;
+
+public class ParameterTypes
 {
-    public class ParameterTypes
+    public static int AddTo(int input1, int input2) => input1 + input2;
+    public static byte BitwiseNegate(byte input) => Convert.ToByte(input ^ 0xff);
+    public static string ConcatAnd(string first, string second) => first + second;
+    public static decimal DecimalAddTo(decimal input1, decimal input2) => input1 + input2;
+    public static double DoubleAddTo(double input1, double input2) => input1 + input2;
+    public static object Echo(object input) => input;
+    public static bool HasValue(int? input) => input.HasValue;
+    public static bool Negate(bool input) => !input;
+    public static int Negate(int input) => -input;
+
+    public static object NegateObject(object input)
     {
-        public static int AddTo(int input1, int input2) => input1 + input2;
-        public static byte BitwiseNegate(byte input) => Convert.ToByte(input ^ 0xff);
-        public static string ConcatAnd(string first, string second) => first + second;
-        public static decimal DecimalAddTo(decimal input1, decimal input2) => input1 + input2;
-        public static double DoubleAddTo(double input1, double input2) => input1 + input2;
-        public static object Echo(object input) => input;
-        public static bool HasValue(int? input) => input.HasValue;
-        public static bool Negate(bool input) => !input;
-        public static int Negate(int input) => -input;
-
-        public static object NegateObject(object input)
-        {
-            if (input == null) return "anything but null";
-            if (long.TryParse(input.ToString(), out var l)) return -l;
-            if (bool.TryParse(input.ToString(), out var b)) return !b;
-            return "not " + input;
-        }
-
-        public static int? NullableInt(int? input) => input;
-        public static double ReciprocalOf(double input) => 1 / input;
+        if (input == null) return "anything but null";
+        if (long.TryParse(input.ToString(), out var l)) return -l;
+        if (bool.TryParse(input.ToString(), out var b)) return !b;
+        return "not " + input;
     }
+
+    public static int? NullableInt(int? input) => input;
+    public static double ReciprocalOf(double input) => 1 / input;
 }

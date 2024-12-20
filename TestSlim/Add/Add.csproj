@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net6.0;net461</TargetFrameworks>
-    <LangVersion>8.0</LangVersion>
+    <TargetFramework>net8.0</TargetFramework>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AnalysysMode>AllEnabledByDefault</AnalysysMode>
-    <Version>3.1.0</Version>
+    <Version>4.0.0</Version>
     <Authors>Rik Essenius</Authors>
     <Description>Demo application to show the use of FitSharp without fixtures</Description>
-    <Copyright>Copyright © Rik Essenius 2015-2023</Copyright>
+    <Copyright>Copyright © Rik Essenius 2015-2024</Copyright>
     <RepositoryUrl>https://github.com/essenius/FitNesseFitSharpFeatureDemos</RepositoryUrl>
   </PropertyGroup>
+
 </Project>

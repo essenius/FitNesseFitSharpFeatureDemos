@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -13,67 +13,66 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestSlim;
 
-namespace TestSlimTest
+namespace TestSlimTest;
+
+[TestClass]
+public class TemperatureTest
 {
-    [TestClass]
-    public class TemperatureTest
+    [TestMethod, ExpectedException(typeof(FormatException))]
+    public void TemperatureConstructorNullFormatExceptionTest()
     {
-        [TestMethod, ExpectedException(typeof(FormatException))]
-        public void TemperatureConstructorNullFormatExceptionTest()
-        {
-            var _ = new Temperature(null);
-        }
+        _ = new Temperature(null);
+    }
 
-        [TestMethod, ExpectedException(typeof(FormatException))]
-        public void TemperatureConstructorWrongScaleTest()
-        {
-            var _ = new Temperature("20 Q");
-        }
+    [TestMethod, ExpectedException(typeof(FormatException))]
+    public void TemperatureConstructorWrongScaleTest()
+    {
+        _ = new Temperature("20 Q");
+    }
 
-        [TestMethod, ExpectedException(typeof(FormatException))]
-        public void TemperatureConstructorWrongValueTest()
-        {
-            var _ = new Temperature("1.q C");
-        }
+    [TestMethod, ExpectedException(typeof(FormatException))]
+    public void TemperatureConstructorWrongValueTest()
+    {
+        _ = new Temperature("1.q C");
+    }
 
-        [TestMethod]
-        public void TemperatureParseTest()
-        {
-            Assert.AreEqual(0, Temperature.Parse("0 K").Value);
-        }
+    [TestMethod]
+    public void TemperatureParseTest()
+    {
+        Assert.AreEqual(0, Temperature.Parse("0 K").Value);
+    }
 
-        [TestMethod]
-        public void TemperatureToStringTest()
-        {
-            Assert.AreEqual("Temperature: 293.15 K", new Temperature("20 C").ToString());
-        }
+    [TestMethod]
+    public void TemperatureToStringTest()
+    {
+        Assert.AreEqual("Temperature: 293.15 K", new Temperature("20 C").ToString());
+    }
 
-        [TestMethod, ExpectedException(typeof(FormatException))]
-        public void TemperatureValueInFormatExceptionTest()
-        {
-            var _ = new Temperature("20 C").ValueIn("Q");
-        }
+    [TestMethod, ExpectedException(typeof(FormatException))]
+    public void TemperatureValueInFormatExceptionTest()
+    {
+        _ = new Temperature("20 C").ValueIn("Q");
+    }
 
-        [TestMethod, ExpectedException(typeof(FormatException))]
-        public void TemperatureValueInNullFormatExceptionTest()
-        {
-            var _ = new Temperature("20 C").ValueIn(null);
-        }
+    [TestMethod, ExpectedException(typeof(FormatException))]
+    public void TemperatureValueInNullFormatExceptionTest()
+    {
+        _ = new Temperature("20 C").ValueIn(null);
+    }
 
-        [TestMethod]
-        public void TemperatureValueInTest()
-        {
-            Assert.AreEqual(68, new Temperature("20 C").ValueIn("F"));
-            Assert.AreEqual(100, new Temperature("212 F").ValueIn("C"));
-            Assert.AreEqual(0, new Temperature("-273.15 C").ValueIn("K"));
-        }
+    [TestMethod]
+    public void TemperatureValueInTest()
+    {
+        Assert.AreEqual(68, new Temperature("20 C").ValueIn("F"));
+        Assert.AreEqual(100, new Temperature("212 F").ValueIn("C"));
+        Assert.AreEqual(0, new Temperature("-273.15 C").ValueIn("K"));
+    }
 
-        [TestMethod]
-        public void TemperatureValueTest()
-        {
-            Assert.AreEqual(293.15, new Temperature("20 C").Value);
-            Assert.AreEqual(373.15, new Temperature("212 F").Value);
-            Assert.AreEqual(100, new Temperature("100 K").Value);
-        }
+    [TestMethod]
+    public void TemperatureValueTest()
+    {
+        Assert.AreEqual(293.15, new Temperature("20 C").Value);
+        Assert.AreEqual(373.15, new Temperature("212 F").Value);
+        Assert.AreEqual(100, new Temperature("100 K").Value);
     }
 }

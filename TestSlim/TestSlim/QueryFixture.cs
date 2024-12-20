@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -11,24 +11,21 @@
 
 using System.Collections.ObjectModel;
 
-namespace TestSlim
+namespace TestSlim;
+
+public class QueryFixture(int max)
 {
-    public class QueryFixture
+    public QueryFixture() : this(4)
     {
-        private readonly int _max;
+    }
 
-        public QueryFixture(int max) => _max = max;
-
-        public QueryFixture() => _max = 4;
-
-        public Collection<object> Query()
+    public Collection<object> Query()
+    {
+        var rowList = new Collection<object>();
+        for (var i = 1; i <= max; i++)
         {
-            var rowList = new Collection<object>();
-            for (var i = 1; i <= _max; i++)
-            {
-                rowList.Add(new Collection<object> {new Collection<object> {"n", i}, new Collection<object> {"n^2", i * i}});
-            }
-            return rowList;
+            rowList.Add(new Collection<object> {new Collection<object> {"n", i}, new Collection<object> {"n^2", i * i}});
         }
+        return rowList;
     }
 }

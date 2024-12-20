@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -11,24 +11,23 @@
 
 using System.Collections.ObjectModel;
 
-namespace TestSlim
-{
-    using TableType = Collection<Collection<string>>;
+namespace TestSlim;
 
-    public class AddOneColumn
+using TableType = Collection<Collection<string>>;
+
+public class AddOneColumn
+{
+    public static TableType DoTable(TableType table)
     {
-        public static TableType DoTable(TableType table)
+        foreach (var row in table)
         {
-            foreach (var row in table)
+            // Make all columns empty to keep them unchanged 
+            for (var i = 0; i < row.Count; i++)
             {
-                // Make all columns empty to keep them unchanged 
-                for (var i = 0; i < row.Count; i++)
-                {
-                    row[i] = string.Empty;
-                }
-                row.Add("pass:ok");
+                row[i] = string.Empty;
             }
-            return table;
+            row.Add("pass:ok");
         }
+        return table;
     }
 }

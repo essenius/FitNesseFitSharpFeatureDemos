@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -10,17 +10,14 @@
 // See the License for the specific language governing permissions and limitations under the License.
 
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace TestSlim
-{
-    [SuppressMessage("Microsoft.Design", "CA1053:StaticHolderTypesShouldNotHaveConstructors", Justification = "FitSharp can't find static classes")]
-    public class EchoFixture
-    {
-        public static object EchoNull => null;
+namespace TestSlim;
 
-        public static string Concat(Collection<string> input) => input.Aggregate(string.Empty, (current, entry) => current + entry);
-        public static object Echo(object input) => input;
-    }
+public class EchoFixture
+{
+    public static object EchoNull => null;
+
+    public static string Concat(Collection<string> input) => input.Aggregate(string.Empty, (current, entry) => current + entry);
+    public static object Echo(object input) => input;
 }

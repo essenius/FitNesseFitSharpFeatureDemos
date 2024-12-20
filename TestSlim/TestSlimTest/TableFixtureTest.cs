@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -13,27 +13,26 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestSlim;
 
-namespace TestSlimTest
+namespace TestSlimTest;
+
+[TestClass]
+public class TableFixtureTest
 {
-    [TestClass]
-    public class TableFixtureTest
+    [TestMethod]
+    public void TableFixtureDoTableTest()
     {
-        [TestMethod]
-        public void TableFixtureDoTableTest()
+        var table = new List<List<string>>
         {
-            var table = new List<List<string>>
-            {
-                new List<string> {"pass", "Passes"},
-                new List<string> {"", "no change"},
-                new List<string> {"error:test", "problem"}
-            };
-            var result = TableFixture.DoTable(table);
-            Assert.AreEqual("", result[0][0]);
-            Assert.AreEqual("pass", result[0][1]);
-            Assert.AreEqual("", result[1][0]);
-            Assert.AreEqual("", result[1][1]);
-            Assert.AreEqual("", result[2][0]);
-            Assert.AreEqual("error:test", result[2][1]);
-        }
+            new() {"pass", "Passes"},
+            new() {"", "no change"},
+            new() {"error:test", "problem"}
+        };
+        var result = TableFixture.DoTable(table);
+        Assert.AreEqual("", result[0][0]);
+        Assert.AreEqual("pass", result[0][1]);
+        Assert.AreEqual("", result[1][0]);
+        Assert.AreEqual("", result[1][1]);
+        Assert.AreEqual("", result[2][0]);
+        Assert.AreEqual("error:test", result[2][1]);
     }
 }

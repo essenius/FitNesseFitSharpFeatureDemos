@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -11,16 +11,15 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-namespace TestSlim
+namespace TestSlim;
+
+public class MethodAndProperty
 {
-    public class MethodAndProperty
-    {
-        private static int _privateData = 123;
+    private static int _privateData = 123;
 
-        [SuppressMessage("Naming", "CA1721:Property names should not match get methods", Justification = "Demonstrating FitSharp behavior")]
-        public static int Data { get; set; } = 321;
+    [SuppressMessage("Naming", "CA1721:Property names should not match get methods", Justification = "Demonstrating FitSharp behavior")]
+    public static int Data { get; set; } = 321;
 
-        public static int GetData() => _privateData;
-        public static void SetData(int value) => _privateData = value;
-    }
+    public static int GetData() => _privateData;
+    public static void SetData(int value) => _privateData = value;
 }

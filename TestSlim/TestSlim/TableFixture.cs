@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -11,15 +11,16 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
-namespace TestSlim
+namespace TestSlim;
+
+using TableList = List<List<string>>;
+using RowList = List<string>;
+
+public class TableFixture
 {
-    using TableList = List<List<string>>;
-    using RowList = List<string>;
-
-    public class TableFixture
-    {
-        public static TableList DoTable(TableList table) => table.Select(MakeResultRow).ToList();
-        private static RowList MakeResultRow(RowList input) => new RowList {"", input[0]};
-    }
+    [SuppressMessage("Design", "CA1002:Do not expose generic lists", Justification = "Table Table interface")]
+    public static TableList DoTable(TableList table) => table.Select(MakeResultRow).ToList();
+    private static RowList MakeResultRow(RowList input) => ["", input[0]];
 }

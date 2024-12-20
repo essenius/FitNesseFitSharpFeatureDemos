@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 //   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file 
 //   except in compliance with the License. You may obtain a copy of the License at
@@ -11,13 +11,12 @@
 
 using System.Collections.ObjectModel;
 
-namespace TestSlim
+namespace TestSlim;
+
+public class ArrayTest
 {
-    public class ArrayTest
-    {
-        public Collection<string> Array { get; set; }
-        public Collection<Collection<string>> ArrayOfArrays { get; set; }
-        public string ArrayField(int index) => Array[index];
-        public string ArrayOfArraysField(int index1, int index2) => ArrayOfArrays[index1][index2];
-    }
+    public Collection<string> Array { get; set; }
+    public Collection<Collection<string>> ArrayOfArrays { get; set; }
+    public string ArrayField(int index) => Array[index];
+    public string ArrayOfArraysField(int index1, int index2) => ArrayOfArrays[index1][index2];
 }

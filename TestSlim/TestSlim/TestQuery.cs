@@ -1,4 +1,4 @@
-﻿// Copyright 2015-2020 Rik Essenius
+﻿// Copyright 2015-2024 Rik Essenius
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -11,22 +11,17 @@
 
 using System.Collections.ObjectModel;
 
-namespace TestSlim
+namespace TestSlim;
+
+public class TestQuery(int maxNumber)
 {
-    public class TestQuery
+    public Collection<object> Query()
     {
-        private readonly int _max;
-
-        public TestQuery(int maxNumber) => _max = maxNumber;
-
-        public Collection<object> Query()
+        var rowList = new Collection<object>();
+        for (var i = 1; i <= maxNumber; i++)
         {
-            var rowList = new Collection<object>();
-            for (var i = 1; i <= _max; i++)
-            {
-                rowList.Add(new Collection<object> {new Collection<object> {"n", i}, new Collection<object> {"2n", 2 * i}});
-            }
-            return rowList;
+            rowList.Add(new Collection<object> {new Collection<object> {"n", i}, new Collection<object> {"2n", 2 * i}});
         }
+        return rowList;
     }
 }
