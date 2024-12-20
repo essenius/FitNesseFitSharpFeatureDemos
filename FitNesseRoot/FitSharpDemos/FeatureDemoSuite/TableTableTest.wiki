@@ -23,17 +23,15 @@ This shows how to leave the existing columns untouched and add a column with the
 {{{using System.Collections.Generic;
 using System.Linq;
 
-namespace TestSlim
+namespace TestSlim;
+
+using TableList = List<List<string>>;
+using RowList = List<string>;
+
+public class TableFixture
 {
-    using TableList = List<List<string>>;
-    using RowList = List<string>;
-
-    public class TableFixture
-    {
-        private static RowList MakeResultRow(RowList input) => new RowList {"", input[0]};
-
-        public static TableList DoTable(TableList table) => table.Select(MakeResultRow).ToList();
-    }
+    public static TableList DoTable(TableList table) => table.Select(MakeResultRow).ToList();
+    private static RowList MakeResultRow(RowList input) => ["", input[0]];
 }
 }}}
 

@@ -21,14 +21,15 @@ The scenario table creates a new instance and shows it is a different one
 |check            |id                      |$id             |
 
 !-MemoObject.cs-!
-{{{namespace TestSlim
+{{{namespace TestSlim;
+
+public class MemoObject(string data)
 {
-    public class MemoObject
+    public MemoObject() : this(string.Empty)
     {
-        public MemoObject(string data) => Data = data;
-        public MemoObject() => Data = string.Empty;
-        public string Data { get; set; }
-        public int Id => GetHashCode();
     }
+
+    public string Data { get; set; } = data;
+    public int Id => GetHashCode();
 }
 }}}

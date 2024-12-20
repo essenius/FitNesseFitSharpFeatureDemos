@@ -11,7 +11,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Diagnostics.CodeAnalysis;
 
 namespace TestSlim;
 
@@ -20,7 +19,6 @@ using RowList = List<string>;
 
 public class TableFixture
 {
-    [SuppressMessage("Design", "CA1002:Do not expose generic lists", Justification = "Table Table interface")]
     public static TableList DoTable(TableList table) => table.Select(MakeResultRow).ToList();
     private static RowList MakeResultRow(RowList input) => ["", input[0]];
 }

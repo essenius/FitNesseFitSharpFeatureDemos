@@ -17,7 +17,6 @@ public class MethodAndProperty
 {
     private static int _privateData = 123;
 
-    [SuppressMessage("Naming", "CA1721:Property names should not match get methods", Justification = "Demonstrating FitSharp behavior")]
     public static int Data { get; set; } = 321;
 
     public static int GetData() => _privateData;

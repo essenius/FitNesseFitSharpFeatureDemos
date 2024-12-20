@@ -18,13 +18,12 @@ The value 'true' passes, 'false' fails, and anything else ignores. Note these ar
 |echo  |$null       |
 
 !-EchoFixture.cs-!:
-{{{namespace TestSlim
+{{{namespace TestSlim;
+
+public class EchoFixture
 {
-    public class EchoFixture
-    {
-        public static object EchoNull => null;
-        public static object Echo(object input) => input;
-    }
+    public static object EchoNull => null;
+    public static object Echo(object input) => input;
 }
 }}}
 

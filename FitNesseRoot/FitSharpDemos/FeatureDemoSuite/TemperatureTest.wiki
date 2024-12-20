@@ -50,53 +50,42 @@ Get a reference to a temperature object holding the temperature of boiling water
 }}}
 Temperature.cs
 {{{using System;
+using System.Globalization;
 
-namespace TestSlim
+namespace TestSlim;
+
+public class Temperature
 {
-    public class Temperature
+    private const double AbsoluteZeroInCelsius = -273.15;
+    private const double AbsoluteZeroInFahrenheit = -459.67;
+    private const int PrecisionInDigits = 10;
+
+    public Temperature(string input)
     {
-        private const double AbsZeroInC = -273.15;
-        private const double AbsZeroInF = -459.67;
-        private const int Digits = 10;
-
-        public Temperature(string input)
+        var scale = input?[^1..].ToUpperInvariant();
+        var temperature = Convert.ToDouble(input?[..^1].Trim(), CultureInfo.InvariantCulture);
+        Value = scale switch
         {
-            var scale = input?.Substring(input.Length - 1).ToUpperInvariant();
-            var temperature = Convert.ToDouble(input?.Substring(0, input.Length - 1).Trim());
-            switch (scale)
-            {
-                case "F":
-                    Value = Math.Round((temperature - AbsZeroInF) * 5 / 9, Digits);
-                    break;
-                case "C":
-                    Value = temperature - AbsZeroInC;
-                    break;
-                case "K":
-                    Value = temperature;
-                    break;
-                default:
-                    throw new FormatException("Expected a double, ending with F, C or K");
-            }
-        }
+            "F" => Math.Round((temperature - AbsoluteZeroInFahrenheit) * 5 / 9, PrecisionInDigits),
+            "C" => temperature - AbsoluteZeroInCelsius,
+            "K" => temperature,
+            _ => throw new FormatException("Expected a double, ending with F, C or K")
+        };
+    }
 
-        public double Value { get; }
-        public static Temperature Parse(string input) => new Temperature(input);
-        public override string ToString() => $"Temperature: {Value} K";
+    public double Value { get; }
+    public static Temperature Parse(string input) => new(input);
+    public override string ToString() => $"Temperature: {Value} K";
 
-        internal double ValueIn(string scale)
+    internal double ValueIn(string scale)
+    {
+        return scale?[..1].ToUpperInvariant() switch
         {
-            switch (scale?.Substring(0, 1).ToUpperInvariant())
-            {
-                case "F":
-                    return Math.Round(Value * 9 / 5 + AbsZeroInF, Digits);
-                case "C":
-                    return Value + AbsZeroInC;
-                case "K":
-                    return Value;
-                default:
-                    throw new FormatException($"Unrecognized scale: {scale}");
-            }
-        }
+            "F" => Math.Round(Value * 9 / 5 + AbsoluteZeroInFahrenheit, PrecisionInDigits),
+            "C" => Value + AbsoluteZeroInCelsius,
+            "K" => Value,
+            _ => throw new FormatException($"Unrecognized scale: {scale}")
+        };
     }
 }
 }}}

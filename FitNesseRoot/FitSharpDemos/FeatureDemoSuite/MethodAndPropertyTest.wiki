@@ -13,15 +13,14 @@ Therefore the recommendation is to standardize using Properties, since the C# co
 |check   |data                             |4                      |
 
 !-MethodAndProperty.cs-!
-{{{namespace TestSlim
+{{{namespace TestSlim;
+
+public class MethodAndProperty
 {
-    public class MethodAndProperty
-    {
-        private static int _privateData = 123;
-        public static int Data { get; set; } = 321;
-        public static int GetData() => _privateData;
-        public static void SetData(int value) => _privateData = value;
-    }
+    private static int _privateData = 123;
+    public static int Data { get; set; } = 321;
+    public static int GetData() => _privateData;
+    public static void SetData(int value) => _privateData = value;
 }
 }}}
 

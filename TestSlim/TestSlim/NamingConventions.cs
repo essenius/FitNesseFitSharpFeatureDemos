@@ -9,23 +9,15 @@
 // distributed on an "AS IS" BASIS WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and limitations under the License.
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace TestSlim;
 
-[SuppressMessage("Code Quality", "IDE0051:Remove unused private members", Justification = "Demonstration of FitSharp functionality")]
 public class NamingConventions
 {
     private static object _privateStaticField;
     internal static object InternalStaticField;
-
-    [SuppressMessage("Microsoft.Usage", "CA2211:NonConstantFieldsShouldNotBeVisible", Justification = "Demonstration of FitSharp functionality")]
     public static object PublicStaticField;
-
     private object _privateField;
     internal object InternalField;
-
-    [SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields", Justification = "Demonstration of FitSharp functionality")]
     public object PublicField;
 
     internal object InternalProperty { get; set; }

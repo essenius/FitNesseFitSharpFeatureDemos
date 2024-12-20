@@ -40,15 +40,14 @@ Then, we revive the changed instance and show its value.
 !-ArrayTest.cs-!
 {{{using System.Collections.ObjectModel;
 
-namespace TestSlim
+namespace TestSlim;
+
+public class ArrayTest
 {
-    public class ArrayTest
-    {
-        public Collection<Collection<string>> ArrayOfArrays { get; set; }
-        public Collection<string> Array { get; set; }
-        public string ArrayField(int index) => Array[index];
-        public string ArrayOfArraysField(int index1, int index2) => ArrayOfArrays[index1][index2];
-    }
+    public Collection<Collection<string>> ArrayOfArrays { get; set; }
+    public Collection<string> Array { get; set; }
+    public string ArrayField(int index) => Array[index];
+    public string ArrayOfArraysField(int index1, int index2) => ArrayOfArrays[index1][index2];
 }
 }}}
 
