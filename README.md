@@ -8,7 +8,7 @@ It include FitNesse test pages as well as corresponding C# fixtures.
 The steps to install are very similar to that of installing the [FibonacciDemo](../../../FitNesseFitSharpFibonacciDemo).
 
 Differences are:
-* Download the repo code as a zip file and extract the contents of the folder ``FitNesseFitSharpFeatureDemos-master`. 
+* Download the repo code as a zip file and extract the contents of the folder `FitNesseFitSharpFeatureDemos-master`. 
 * Go to solution folder: `cd /D %LOCALAPPDATA%\FitNesse\TestSlim`
 * If you have .NET SDK installed:
     * Build fixture solution: `dotnet build --configuration release TestSlim.sln`
